@@ -326,7 +326,7 @@ String code = Yarn.$.create("""
   } 
   """, "variable", map); 
 
-// Yarn.$ is already defined of course! But we can also setup something else: 
+// Yarn.$ is already defined for us of course! But we can also setup something else, like for a hash #{}: 
 SH = new Yarn("#{", "}");                         
 String line = SH.create("Hello my name is #{name}!", "name", "Joseph");
 ```                                                               
