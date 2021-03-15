@@ -63,6 +63,7 @@ IO.eachLine(file, (line, number) -> {
 ```
 
 ```java
+// write
 IO.write (CharSequence , ...) : void
 IO.write (File         , ...) : void
 IO.write (URL          , ...) : void                               
@@ -73,7 +74,8 @@ IO.write (File         , ...) : void
     
 ```
 
-```java
+```java                                                  
+// read
 IO.text (CharSequence)        : String
 IO.text (File)                : String
 IO.text (URI)                 : String
@@ -84,6 +86,7 @@ IO.text (InputStream)         : String
 ```    
 
 ```java
+// read
 IO.bytes (CharSequence)       : byte[]
 IO.bytes (File)               : byte[]
 IO.bytes (URL)                : byte[]
