@@ -91,7 +91,7 @@ public class Hashcodes { private Hashcodes(){}
         return hashcode( hashCode(file) );
     }
     public static int hashCode(File file) {
-        return hashCode( IO.getBytes(file) );
+        return hashCode( IO.bytes(file) );
     }
     
     /**

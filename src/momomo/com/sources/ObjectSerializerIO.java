@@ -41,7 +41,7 @@ public interface ObjectSerializerIO extends ObjectSerializer {
         }
     
         public static <T> T deserialize(File file)  {
-            return deserialize(IO.getBytes(file));
+            return deserialize(IO.bytes(file));
         }
     
         public static <T> T deserialize(byte[] data) {

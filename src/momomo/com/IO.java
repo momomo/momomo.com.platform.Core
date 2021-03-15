@@ -379,13 +379,13 @@ public class IO { private IO() {}
     
     
     /////////////////////////////////////////////////////////////////////
-    // getBytes(String, File, URL, URLConnection, InputStream)
+    // bytes() = getBytes(String, File, URL, URLConnection, InputStream)
     /////////////////////////////////////////////////////////////////////
-    public static byte[] getBytes(CharSequence filepath) {
-        return getBytes(toFile(filepath.toString()));
+    public static byte[] bytes(CharSequence filepath) {
+        return bytes(toFile(filepath.toString()));
     }
     
-    public static byte[] getBytes(File file) {
+    public static byte[] bytes(File file) {
         try {
             return Files.readAllBytes(toPath(file));
         } catch (IOException e) {
@@ -393,15 +393,15 @@ public class IO { private IO() {}
         }
     }
     
-    public static byte[] getBytes(URL url) {
-        return getBytes(toConnection(url));
+    public static byte[] bytes(URL url) {
+        return bytes(toConnection(url));
     }
     
-    public static byte[] getBytes(URLConnection connection) {
-        return getBytes(getInputStream(connection));
+    public static byte[] bytes(URLConnection connection) {
+        return bytes(getInputStream(connection));
     }
     
-    public static byte[] getBytes(InputStream is) {
+    public static byte[] bytes(InputStream is) {
         try ( is; ByteArrayOutputStream bos = new ByteArrayOutputStream(BUFFER_SIZE) ) {
             byte[] buffer = new byte[BUFFER_SIZE];
             
@@ -416,7 +416,7 @@ public class IO { private IO() {}
     }
     
     /////////////////////////////////////////////////////////////////////
-    // getText(String, File, URL, URLConnection, InputStream)
+    // text = getText(String, File, URL, URLConnection, InputStream)
     /////////////////////////////////////////////////////////////////////
     
     public static String text(CharSequence filepath) {
@@ -432,7 +432,7 @@ public class IO { private IO() {}
         return text(file, Strings.CHARSET);
     }
     public static String text(File file, Charset charset) {
-        return $Bytes.toString(getBytes(file), charset);
+        return $Bytes.toString(bytes(file), charset);
     }
     
     /////////////////////////////////////////////////////////////////////
@@ -441,7 +441,7 @@ public class IO { private IO() {}
         return text(url, Strings.CHARSET);
     }
     public static String text(URL url, Charset charset) {
-        return $Bytes.toString(getBytes(url), charset);
+        return $Bytes.toString(bytes(url), charset);
     }
     
     /////////////////////////////////////////////////////////////////////
@@ -459,7 +459,7 @@ public class IO { private IO() {}
         return text(connection, Strings.CHARSET);
     }
     public static String text(URLConnection connection, Charset charset) {
-        return $Bytes.toString(getBytes(connection), charset);
+        return $Bytes.toString(bytes(connection), charset);
     }
     
     /////////////////////////////////////////////////////////////////////
@@ -468,7 +468,7 @@ public class IO { private IO() {}
         return text(is, Strings.CHARSET);
     }
     public static String text(InputStream is, Charset charset) {
-        return $Bytes.toString(getBytes(is), charset);
+        return $Bytes.toString(bytes(is), charset);
     }
     
     /////////////////////////////////////////////////////////////////////
