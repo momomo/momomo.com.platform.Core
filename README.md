@@ -85,7 +85,7 @@ IO.remove (CharSequence)               : void
 IO.remove (File)                       : void
 
 // ... and more ...                                        
-```                                                      
+```
 
 ```java
 // Create directory if not already exists, true for clean if exists
@@ -94,11 +94,9 @@ IO.write  ("/path/to/some/file", "Writes this text to file. Becomes the content 
 IO.append ("/path/to/some/file", " We add this to the file.")  
 
 assert IO.getText("/path/to/some/file").equals("Writes this text to file. Becomes the content in the file. We add this to the file.")
+```
 
-////////////////////////////////////////////////
-/////// Example with IO.Iterate.Url.each //////             
-//////////////////////////////////////////////
-
+```java
 IO.Iterate.File.each, eachRecurse, find, findRecurse ...                
 IO.Iterate.Zip .each, ...                
 IO.Iterate.Jar .each, ... 
@@ -141,7 +139,6 @@ IO.Iterate.File.eachRecurse(dir, file -> {
     }
 });
 ```
-
 
 #### [Is.java](src/momomo/com/Is.java) samples
 
