@@ -323,8 +323,11 @@ String code = Yarn.$.create("""
     
     Welcome to our ${site}!
 """, "name", "Peter", "site", "momomo.com"); 
+```
 
-// Yarn.$ is already defined for us of course! But we can also setup something else, like for a hash #{}: 
+`Yarn.$` is already defined for us of course! But we can also setup something else, like for a hash `#{}`:
+
+```java
 SH = new Yarn("#{", "}"); String line = SH.create("Hello my name is #{name}!", "name", "Joseph");
 ```                                                               
 
