@@ -2,9 +2,11 @@
 
 #### This module is essentially what makes the Core of several of momomo.com's public releases
 
-Visit our other repository - [momomo.com.platform.Lambda](https://github.com/momomo/momomo.com.platform.Lambda) - for examples on what `Lambda.V1E`, `Lambda.V2E`, `Lambda.R1E` is and how to use them. 
+#### Our other GitHub repositories
 
-They are basically `Runnables`, `Suppliers`, `Function`, `BiFunction`, `Consumer` and so on all packed in a easily understood declaration pattern.
+* [momomo.com.platform.Lambda](https://github.com/momomo/momomo.com.platform.Lambda)  
+They are basically a bunch of `functional interfaces` similar to `Runnable`, `Supplier`, `Function`, `BiFunction`, `Consumer` `...` and so forth all packed in a easily understood declaration pattern.  
+`Lambda.V1E`, `Lambda.V2E`, `Lambda.R1E`, `Lambda.R2E` are used plenty in examples below.
 
 ### Important
 
@@ -12,15 +14,11 @@ They are basically `Runnables`, `Suppliers`, `Function`, `BiFunction`, `Consumer
 
 Our IO related operations, nor do most of our other API's, throw a bunch of different checked `exceptions` for various things. Instead we usually transform a checked `exception` into to a `runtime` `exception` equivalent.
 
-For instance: 
-
-For a thrown `IOException` we will `throw new $IOException(original)`. 
-
-For a thrown `URISyntaxException` we will `throw new $URISyntaxException(original)`. 
-
-For all other not specially tailored exception handling we will simply `throw new $RuntimeException(original)`.  
-
-We usually do this automagically using our `Ex.runtime(exception)` method(s).
+######For instance  
+For a thrown `IOException` we will `throw new $IOException(original)`.   
+For a thrown `URISyntaxException` we will `throw new $URISyntaxException(original)`.   
+For all other not specially tailored exception handling we will simply `throw new $RuntimeException(original)`.    
+We usually do this automagically using our `Ex.runtime(exception)` method(s) to also avoid wrapping an `Exception` twice. 
 
 #### [IO.java](src/momomo/com/IO.java) sample
 
