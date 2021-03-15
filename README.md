@@ -176,9 +176,7 @@ Boolean             bool  = null;
 String[]            array = {};
 ArrayList<String>   list  = new ArrayList<>();
 Map<String, String> map   = new HashMap<>();       
-```
 
-```java
 Is.Ok(obj);   // false
 Is.Ok(bool);  // false
 Is.Ok(array); // false
