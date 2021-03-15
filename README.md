@@ -37,6 +37,9 @@ IO.eachLine(file, (line, number) -> {
     System.out.println( "On line number " + number " we found " + val + "=" + key );
 });
 // ... and more ...
+```
+
+```java
                                                     
 // mkdir
 IO.mkdir (CharSequence)                : boolean
@@ -52,10 +55,8 @@ IO.write (URL          , ...)          : void
 IO.write (URLConnection, ...)          : void
 IO.write (OutputStream , ...)          : void      
 IO.write (File         , ...)          : void                
-IO.write (File         , ...)          : void               
-```    
+IO.write (File         , ...)          : void
 
-```java
 IO.getText (CharSequence)              : String
 IO.getText (File)                      : String
 IO.getText (InputStream)               : String
@@ -63,7 +64,9 @@ IO.getText (URI)                       : String
 IO.getText (URL)                       : String
 IO.getText (URLConnection)             : String
 IO.getText (BufferedReader)            : String
+```    
 
+```java
 IO.copy (CharSequence, CharSequence)   : void                            
 IO.copy (File, File)                   : void         
 ...                                      
