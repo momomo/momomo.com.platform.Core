@@ -9,7 +9,7 @@ Contains a bunch of `functional interfaces` similar to `Runnable`, `Supplier`, `
   
 `Lambda.V1E`, `Lambda.V2E`, `Lambda.R1E`, `Lambda.R2E` are used plenty in examples below.
 
-### Maven dependency available on maven central (search.maven.org)
+### Maven dependency available on maven central [search.maven.org](https://search.maven.org/search?q=com.momomo)
 #### Dependency   
 ```xml
 <dependency>
