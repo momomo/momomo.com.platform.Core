@@ -4,11 +4,13 @@ import com.opencsv.CSVParser;
 import com.opencsv.CSVParserBuilder;
 import com.opencsv.CSVReader;
 import com.opencsv.CSVReaderBuilder;
-import momomo.com.Lambda;
+import com.opencsv.exceptions.CsvValidationException;
+import momomo.com.Ex;
 import momomo.com.IO;
+import momomo.com.Lambda;
 
 import java.io.File;
-import java.io.FileReader;
+import java.io.IOException;
 
 /**
  * @author Joseph S.
@@ -35,23 +37,31 @@ public class Csv {
     /**
      * Each row except for the first one containing the columns which are lowercased
      */
-    public <E extends Exception> void foreach(File file, Lambda.V2E<String[], String[], E> lambda) throws Exception {
-        IO.withBomAwareBufferedReader(new FileReader(file), (r) -> {
+    public <E extends Exception> void foreach(File file, Lambda.V2E<String[], String[], E> lambda) throws E {
+        IO.withBomAwareBufferedReader(IO.getFileReader(file), (r) -> {
             CSVReader reader = new CSVReaderBuilder(r).withCSVParser(parser).build();
-            
+    
             // First row is the column names
-            String[] columns = reader.readNext();
+            String[] columns = readNext(reader);
             if ( this.lowercasedColumnKeys ) {
                 int i = -1; while ( ++i < columns.length ) {
                     columns[i] = columns[i].toLowerCase();
                 }
             }
-            
+    
             // Row is an array of values from the row
-            String[] row; while ( (row = reader.readNext()) != null ) {
+            String[] row; while ( (row = readNext(reader)) != null ) {
                 lambda.call(columns, row);
             }
         });
+    }
+    
+    private static String[] readNext(CSVReader reader) {
+        try {
+            return reader.readNext();
+        } catch (IOException | CsvValidationException e) {
+            throw Ex.runtime(e);
+        }
     }
     
 }

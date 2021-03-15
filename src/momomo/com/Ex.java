@@ -138,18 +138,30 @@ public class Ex { private Ex(){}
         }
         
         if ( e instanceof IOException ) {
-            return new $IOException( (IOException) e );
+            return runtime( (IOException) e );
         }
         
         if ( e instanceof InterruptedException ) {
-            return new $InterruptedException( (InterruptedException) e );
+            return runtime((InterruptedException) e);
         }
     
         if ( e instanceof SQLException ) {
-            return new $DatabaseSQLException((SQLException) e);
+            return runtime((SQLException) e);
         }
     
         return new $RuntimeException(e); 
+    }
+    
+    public static $RuntimeException runtime(IOException e) {
+        return new $IOException(e);
+    }
+    
+    public static $InterruptedException runtime(InterruptedException e) {
+        return new $InterruptedException(e);
+    }
+    
+    public static $DatabaseSQLException runtime(SQLException e) {
+        return new $DatabaseSQLException(e);
     }
 
     /////////////////////////////////////////////////////////////////////

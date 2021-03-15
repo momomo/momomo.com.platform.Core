@@ -16,7 +16,9 @@ import momomo.com.sources.Zip;
 import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
@@ -1383,6 +1385,22 @@ public class IO { private IO() {}
         }
     }
     
+    public static InputStream getInputStream(ZipFile zip, ZipEntry entry) {
+        try {
+            return zip.getInputStream(entry);
+        } catch (IOException e) {
+            throw Ex.runtime(e);
+        }
+    }
+    
+    public static FileReader getFileReader(File file) {
+        try {
+            return new FileReader(file);
+        } catch (FileNotFoundException e) {
+            throw Ex.runtime(e);
+        }
+    }
+    
     /////////////////////////////////////////////////////////////////////
     // getRelativePath
     /////////////////////////////////////////////////////////////////////
@@ -1487,15 +1505,19 @@ public class IO { private IO() {}
      * Used for CSV parsers.
      * @see momomo.com.sources.Csv
      */
-    public static <E extends Exception> void withBomAwareBufferedReader(Reader reader, Lambda.V1E<Reader, E> lambda) throws E, IOException {
-        try ( reader; BufferedReader bfr = new BufferedReader(reader) ) {
-            bfr.mark(1);
-            
-            int first = bfr.read(); if ( !BOOMS.contains(first) ) {
-                bfr.reset(); // resets back to mark
+    public static <E extends Exception> void withBomAwareBufferedReader(Reader reader, Lambda.V1E<Reader, E> lambda) throws E {
+        try {
+            try ( reader; BufferedReader bfr = new BufferedReader(reader) ) {
+                bfr.mark(1);
+                
+                int first = bfr.read(); if ( !BOOMS.contains(first) ) {
+                    bfr.reset(); // resets back to mark
+                }
+                
+                lambda.call(bfr);
             }
-            
-            lambda.call(bfr);
+        } catch (IOException e) {
+            throw Ex.runtime(e);
         }
     }
     

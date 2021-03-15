@@ -1,9 +1,9 @@
 package momomo.com;
 
-import momomo.com.sources.LockCount;
 import momomo.com.annotations.informative.Beta;
 import momomo.com.collections.$LinkedBlockingQueue;
 import momomo.com.exceptions.$RuntimeException;
+import momomo.com.sources.LockCount;
 import momomo.com.sources.Wrap;
 
 import java.util.List;
@@ -44,6 +44,8 @@ import java.util.concurrent.atomic.AtomicLong;
  *      executor.await() 
  *      
  *      executor.async( ... ) 
+ *      
+ * TODO clean checked exceptions     
  *      
  * @author Joseph S.
  */

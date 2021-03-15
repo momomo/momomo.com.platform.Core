@@ -1,11 +1,11 @@
 package momomo.com.sources;
 
-import momomo.com.Lambda;
-import momomo.com.exceptions.$IOException;
-import momomo.com.Strings;
 import momomo.com.Ex;
 import momomo.com.IO;
 import momomo.com.Is;
+import momomo.com.Lambda;
+import momomo.com.Strings;
+import momomo.com.exceptions.$IOException;
 
 import java.io.File;
 import java.io.IOException;
@@ -132,19 +132,19 @@ public class Zip implements AutoCloseable {
         }
     }
     
-    public final File unpack(File to) throws IOException {
+    public final File unpack(File to) {
         return unpack(to, path);
     }
     
-    public final File unpack(File to, boolean retain) throws IOException {
+    public final File unpack(File to, boolean retain) {
         return unpack(to, path, retain);
     }
     
-    public final File unpack(File to, String path) throws IOException {
+    public final File unpack(File to, String path) {
         return unpack(to, path, false);
     }
     
-    public final File unpack(File to, String path, boolean retain) throws IOException {
+    public final File unpack(File to, String path, boolean retain) {
         ZipEntry entry = zip.getEntry(path);
         
         // Basically, wether to extract it and retain the folder structure as withing the zip file or just extract it as a single file. Defaults to false
@@ -172,7 +172,7 @@ public class Zip implements AutoCloseable {
                 else {
                     create.getParentFile().mkdirs();
                     
-                    IO.write(create, zip.getInputStream(zipEntry) );
+                    IO.write(create, IO.getInputStream(zip, zipEntry));
                 }
                 
                 return null;
@@ -181,15 +181,19 @@ public class Zip implements AutoCloseable {
         else {
             file.getParentFile().mkdirs();
             
-            IO.write(file, zip.getInputStream(entry));
+            IO.write(file, IO.getInputStream(zip, entry));
         }
         
         return file;
     }
     
     @Override
-    public void close() throws Exception {
-        zip.close();
+    public void close() {
+        try {
+            zip.close();
+        } catch (IOException e) {
+            throw Ex.runtime(e);
+        }
     }
     
 }
