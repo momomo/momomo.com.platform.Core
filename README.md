@@ -10,7 +10,7 @@ Contains a bunch of `functional interfaces` similar to `Runnable`, `Supplier`, `
 
 ### Maven dependency available on maven central (search.maven.org)
 #### Dependency   
-```
+```xml
 <dependency>
   <groupId>com.momomo</groupId>
   <artifactId>momomo.com.platform.Core</artifactId>
@@ -18,7 +18,7 @@ Contains a bunch of `functional interfaces` similar to `Runnable`, `Supplier`, `
 </dependency>                                                      
 ```                         
 #### Repository
-```
+```xml
 <repository>
     <id>maven-central</id>
     <url>http://repo1.maven.org/maven2</url>
