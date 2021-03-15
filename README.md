@@ -275,17 +275,17 @@ HashMap<String, String> world = merge(copy(europe), africa);
 //////            We print              ///////
 //////////////////////////////////////////////
 
-System.out.println("Europe: " + europe.size());
-System.out.println("Africa: " + africa.size());
-System.out.println("World : " + world.size());
+System.out.println("Countries in Europe: " + europe.size());
+System.out.println("Countries in Africa: " + africa.size());
+System.out.println("Countries in World : " + world.size());
 
 for (Map.Entry<String, String> entry : world.entrySet()) {
     System.out.println("Capital of " + entry.getKey() + " is " + entry.getValue() );
 }
 
-Europe: 5
-Africa: 2
-World : 7
+Countries in Europe: 5
+Countries in Africa: 2
+Countries in World : 7
 Capital of Sweden is Stockholm
 Capital of Morocco is Rabat
 Capital of Norway is Oslo
