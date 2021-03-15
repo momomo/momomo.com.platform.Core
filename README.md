@@ -52,8 +52,10 @@ IO.write (URL          , ...)          : void
 IO.write (URLConnection, ...)          : void
 IO.write (OutputStream , ...)          : void      
 IO.write (File         , ...)          : void                
-IO.write (File         , ...)          : void
+IO.write (File         , ...)          : void               
+```    
 
+```java
 IO.getText (CharSequence)              : String
 IO.getText (File)                      : String
 IO.getText (InputStream)               : String
@@ -81,7 +83,9 @@ IO.remove (CharSequence)               : void
 IO.remove (File)                       : void
 
 // ... and more ...                                        
-                  
+```
+
+```java                  
 // Create directory if not already exists, true for clean if exists
 IO.mkdirs ("/path/to/some/dir", true);                     
 IO.write  ("/path/to/some/file", "Writes this text to file. Becomes the content in the file.")
