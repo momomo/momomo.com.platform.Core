@@ -169,7 +169,7 @@ IO.Iterate.File.eachRecurse(dir, file -> {
 });
 ```
 
-#### [Is.java](src/momomo/com/Is.java) samples
+#### [Is.java](src/momomo/com/Is.java) sample
 
 `Is` is class containing various boolean related **answers** for various questions.  
 
@@ -243,7 +243,7 @@ Is.Production(...)
 ...
 ```                                           
 
-#### [$Maps.java](src/momomo/com/$Maps.java) samples
+#### [$Maps.java](src/momomo/com/$Maps.java) sample
 
 ```java                                                                            
 $Maps.map()
@@ -300,7 +300,7 @@ Capital of France is Paris
 Capital of Germany is Berlin
 ```                                                            
 
-#### [Yarn.java](src/momomo/com/Yarn.java) samples
+#### [Yarn.java](src/momomo/com/Yarn.java) sample
 
 It is named `Yarn` to resemble and make the connectoin with the word `String`, hence it is for String related operations, a particular one purpose kind.
 ```java
@@ -317,7 +317,7 @@ SH = new Yarn("#{", "}");
 String line = SH.create("Hello my name is #{name}!", "name", "Joseph");
 ```                                                               
 
-#### [Strings.java](src/momomo/com/Strings.java) samples
+#### [Strings.java](src/momomo/com/Strings.java) sample
 ```java
 Strings.eachLine            (CharSequence, Lambda.V1E<String, E>)    : void
 Strings.eachLine            (Scanner     , Lambda.V1E<String, E>)    : void
@@ -357,117 +357,117 @@ Strings.Prepend.linenumber  (CharSequence, )                         : String
 
 ```
 
-#### [$Lists.java](src/momomo/com/$Lists.java) samples
+#### [$Lists.java](src/momomo/com/$Lists.java) sample
 ```java
 Coming soon. Please refer to the source code for now.
 ```
 
-#### [$Arrays.java](src/momomo/com/$Arrays.java) samples
+#### [$Arrays.java](src/momomo/com/$Arrays.java) sample
 ```java
 Coming soon. Please refer to the source code for now. 
 ```                                                  
 
-#### [$Collections.java](src/momomo/com/$Collections.java) samples
+#### [$Collections.java](src/momomo/com/$Collections.java) sample
 ```java
 Coming soon. Please refer to the source code for now. 
 ```
 
-#### [$Environment.java](src/momomo/com/$Environment.java) samples
+#### [$Environment.java](src/momomo/com/$Environment.java) sample
 ```java
 Coming soon. Please refer to the source code for now. 
 ```                                                  
-#### [$Array.java](src/momomo/com/collections/$Array.java) samples
+#### [$Array.java](src/momomo/com/collections/$Array.java) sample
 ```java
 Coming soon. Please refer to the source code for now. 
 ```
 
-#### [$ConcurrentHashSet.java](src/momomo/com/collections/$ConcurrentHashSet.java) samples
+#### [$ConcurrentHashSet.java](src/momomo/com/collections/$ConcurrentHashSet.java) sample
 ```java
 Coming soon. Please refer to the source code for now. 
 ```
 
-#### [$ConcurrentIndexedLinkedHashSet.java](src/momomo/com/collections/$ConcurrentIndexedLinkedHashSet.java) samples
+#### [$ConcurrentIndexedLinkedHashSet.java](src/momomo/com/collections/$ConcurrentIndexedLinkedHashSet.java) sample
 ```java
 Coming soon. Please refer to the source code for now. 
 ```
 
-#### [$ConcurrentList.java](src/momomo/com/collections/$ConcurrentList.java) samples
+#### [$ConcurrentList.java](src/momomo/com/collections/$ConcurrentList.java) sample
 ```java
 Coming soon. Please refer to the source code for now. 
 ```
 
-#### [$ConcurrentRotatingQueue.java](src/momomo/com/collections/$ConcurrentRotatingQueue.java) samples
+#### [$ConcurrentRotatingQueue.java](src/momomo/com/collections/$ConcurrentRotatingQueue.java) sample
 ```java
 Coming soon. Please refer to the source code for now. 
 ```
 
-#### [$List.java](src/momomo/com/collections/$List.java) samples
+#### [$List.java](src/momomo/com/collections/$List.java) sample
 ```java
 Coming soon. Please refer to the source code for now. 
 ```
 
-#### [$Map.java](src/momomo/com/collections/$List.java) samples
+#### [$Map.java](src/momomo/com/collections/$List.java) sample
 ```java
 Coming soon. Please refer to the source code for now. 
 ```
 
-#### [$MapQuick.java](src/momomo/com/collections/$MapQuick.java) samples
+#### [$MapQuick.java](src/momomo/com/collections/$MapQuick.java) sample
 ```java
 Coming soon. Please refer to the source code for now. 
 ```
 
-#### [$Set.java](src/momomo/com/collections/$Set.java) samples
+#### [$Set.java](src/momomo/com/collections/$Set.java) sample
 ```java
 Coming soon. Please refer to the source code for now. 
 ```
 
-#### [Hashcodes.java](src/momomo/com/Hashcodes.java) samples
+#### [Hashcodes.java](src/momomo/com/Hashcodes.java) sample
 ```java
 Coming soon. Please refer to the source code for now. 
 ```
 
-#### [Runtimes.java](src/momomo/com/Runtimes.java) samples
+#### [Runtimes.java](src/momomo/com/Runtimes.java) sample
 ```java
 Coming soon. Please refer to the source code for now. 
 ```
 
-#### [Nano.java](src/momomo/com/Nano.java) samples
+#### [Nano.java](src/momomo/com/Nano.java) sample
 ```java
 Coming soon. Please refer to the source code for now. 
 ```
 
-#### [Nanotime.java](src/momomo/com/sources/Nanotime.java) samples
+#### [Nanotime.java](src/momomo/com/sources/Nanotime.java) sample
 ```java
 Coming soon. Please refer to the source code for now. 
 ```
 
-#### [Zip.java](src/momomo/com/sources/Zip.java) samples
+#### [Zip.java](src/momomo/com/sources/Zip.java) sample
 ```java
 Coming soon. Please refer to the source code for now. 
 ```
 
-#### [Call.java](src/momomo/com/Call.java) samples
+#### [Call.java](src/momomo/com/Call.java) sample
 ```java
 Coming soon. Please refer to the source code for now. 
 ```
 
-#### [MovingAverageConverging.java](src/momomo/com/sources/MovingAverageConverging.java) samples
+#### [MovingAverageConverging.java](src/momomo/com/sources/MovingAverageConverging.java) sample
 ```java
 Coming soon. Please refer to the source code for now. 
 ```
 
-#### [MovingAverageCumulative.java](src/momomo/com/sources/MovingAverageCumulative.java) samples
+#### [MovingAverageCumulative.java](src/momomo/com/sources/MovingAverageCumulative.java) sample
 ```java
 Coming soon. Please refer to the source code for now. 
 ```
 
-#### [Sysprop.java](src/momomo/com/sources/Sysprop.java) samples
+#### [Sysprop.java](src/momomo/com/sources/Sysprop.java) sample
 ```java
 Coming soon. Please refer to the source code for now. 
 ```
 
 
-#### [Gson.java](src/momomo/com/Gson.java) samples
+#### [Gson.java](src/momomo/com/Gson.java) sample
 ```java
 Coming soon. Please refer to the source code for now. 
 ```
