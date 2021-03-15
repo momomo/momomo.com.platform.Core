@@ -51,6 +51,7 @@ IO.eachLine (CharSequence, Lambda.R2E<Boolean, String, Integer, E>) throws E
 IO.eachLine (File        , Lambda.R2E<Boolean, String, Integer, E>) throws E            
 IO.eachLine (InputStream , Lambda.R2E<Boolean, String, Integer, E>) throws E  
 IO.eachLine (URL         , Lambda.R2E<Boolean, String, Integer, E>) throws E
+...  
 
 // Iterate each line in file and operate on eachLine 
 IO.eachLine(file, (line, number) -> {
@@ -59,7 +60,6 @@ IO.eachLine(file, (line, number) -> {
 
     System.out.println( "On line number " + number " we found " + val + "=" + key );
 });
-// ... and more ...
 ```
 
 ```java
