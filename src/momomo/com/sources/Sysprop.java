@@ -9,10 +9,10 @@ import momomo.com.Numbers;
  * A convinient wrapper for setting and getting system property values
  * 
  * Example
- *         public static final $SysProp REDIS_URL      = new $SysProp("momomo.com.redis.url"     , "127.0.0.1");
- *         public static final $SysProp REDIS_PORT     = new $SysProp("momomo.com.redis.port"    , "9002");
- *         public static final $SysProp REDIS_IDLE     = new $SysProp("momomo.com.redis.idle"    , "32");
- *         public static final $SysProp REDIS_PASSWORD = new $SysProp("momomo.com.redis.password", "NMsuiyh2b289BKbjs980HNOLB9982y3g2vj3209_s");
+ *         public static final Sysprop REDIS_URL      = new Sysprop("momomo.com.redis.url"     , "127.0.0.1");
+ *         public static final Sysprop REDIS_PORT     = new Sysprop("momomo.com.redis.port"    , "9002");
+ *         public static final Sysprop REDIS_IDLE     = new Sysprop("momomo.com.redis.idle"    , "32");
+ *         public static final Sysprop REDIS_PASSWORD = new Sysprop("momomo.com.redis.password", "NMsuiyh2b289BKbjs980HNOLB9982y3g2vj3209_s");
  *    
  *    which can then be used as: 
  *    
