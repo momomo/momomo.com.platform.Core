@@ -76,11 +76,19 @@ IO.write (File         , ...) : void
 ```java
 IO.text (CharSequence)        : String
 IO.text (File)                : String
-IO.text (InputStream)         : String
 IO.text (URI)                 : String
 IO.text (URL)                 : String
 IO.text (URLConnection)       : String
 IO.text (BufferedReader)      : String
+IO.text (InputStream)         : String
+```    
+
+```java
+IO.bytes (CharSequence)       : byte[]
+IO.bytes (File)               : byte[]
+IO.bytes (URL)                : byte[]
+IO.bytes (URLConnection)      : byte[]
+IO.bytes (InputStream)        : byte[]
 ```    
 
 ```java
