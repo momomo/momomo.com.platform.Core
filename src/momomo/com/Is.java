@@ -180,29 +180,37 @@ public class Is { private Is(){}
     /////////////////////////////////////////////////////////////////////
     
     /**
-     * Similar to Map.compute. 
      * Returns first if it is Ok() otherwise calls and returns whatever the lambda has to offer. 
      * 
      * Example
      *   Is.Ok(object, ()-> { 
-     *      return another; 
+     *      return somethingOnElse;  
      *   })
      */
-    public static <R, E extends Exception> R Else(R o, Lambda.RE<R, E> elze) throws E {
-        return Is.Ok(o) ? o : elze.call();
+    public static <R, E extends Exception> R Else(R o, Lambda.RE<R, E> Else) throws E {
+        return Is.Ok(o) ? o : Else.call();
     }
+    
     /**
-     * Similar to Map.compute
-     *
      * Example
      *   Is.Ok(object, ()-> {
-     *      // Do something 
+     *      // Do something on else 
      *   })
      *   
      *   Does not return anything.
      */
-    public static <R, E extends Exception> void Else(R o, Lambda.VE<E> elze) throws E {
-        Else(o, elze.RE());
+    public static <R, E extends Exception> void Else(R o, Lambda.VE<E> Else) throws E {
+        Else(o, Else.RE());
+    }
+    
+    /**
+     * Is.Else(obj, ()-> { compute and return if true }, () -> { computer and return if false }) 
+     * 
+     * This method can be crucial when in a constructor and requiring a one line ( Java ) to create some magic prior to calling super. 
+     * If else blocks there won't work, but this will.
+     */
+    public static <R, E extends Exception> R Else(R o, Lambda.RE<R, E> If, Lambda.RE<R, E> Else) throws E {
+        return Is.Ok(o) ? If.call() : Else.call();
     }
     
     /**

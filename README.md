@@ -146,9 +146,11 @@ Object              obj   = null;
 Boolean             bool  = null;
 String[]            array = {};
 ArrayList<String>   list  = new ArrayList<>();
-Map<String, String> map   = new HashMap<>();
+Map<String, String> map   = new HashMap<>();       
+```
 
-Is.Ok(obj);   // falsere
+```java
+Is.Ok(obj);   // false
 Is.Ok(bool);  // false
 Is.Ok(array); // false
 Is.Ok(list);  // false
@@ -173,27 +175,37 @@ Is.Ok(obj);   // true
 
 obj = Boolean.TRUE;
 Is.Ok(obj);   // true                      
+```
 
+```java
 ////////////////////////////////////////////////
 ///////              Other               ////// 
 
 Is.Equal(...)
 Is.Primitive(...)                          
 Is.Double(...)
-Is.Or(...)
-Is.True(...)
-Is.False(...)    
+... 
+
 Is.NotNull(...)
 Is.Null(...)
+
+   
+Is.True(...)
+Is.False(...)
+Is.Or(...)
 Is.Empty(...)
 Is.Between(...)
 Is.In(...)
 Is.In.Jar(...)
+
 Is.Linux(...)
 Is.Window(...)
 Is.Mac(...)
+
 Is.Symlink(...)
-Is.Array(...)
+
+Is.Array(...)      
+
 Is.Development(...)
 Is.Test(...)
 Is.Production(...)
