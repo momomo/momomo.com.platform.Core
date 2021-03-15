@@ -1,7 +1,7 @@
 <!---
 -->
 
-## mcommentomomo.com.platform.Core
+## momomo.com.platform.Core
 
 ###### Is essentially what makes the Core of several of momomo.com's public releases, and is packed with useful everyday `Java` utility that at least serves our needs very well.
 
