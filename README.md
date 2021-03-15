@@ -325,8 +325,7 @@ String code = Yarn.$.create("""
 """, "name", "Peter", "site", "momomo.com"); 
 
 // Yarn.$ is already defined for us of course! But we can also setup something else, like for a hash #{}: 
-SH = new Yarn("#{", "}");                         
-String line = SH.create("Hello my name is #{name}!", "name", "Joseph");
+SH = new Yarn("#{", "}"); String line = SH.create("Hello my name is #{name}!", "name", "Joseph");
 ```                                                               
 
 #### [Strings.java](src/momomo/com/Strings.java) sample
