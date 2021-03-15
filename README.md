@@ -193,7 +193,7 @@ Is.NotNull(...)
 Is.Null(...)
 
    
-IO.True(...)
+Is.True(...)
 Is.False(...)
 Is.Or(...)
 Is.Empty(...)
@@ -224,10 +224,10 @@ $Maps.map(K, V, K, V, ...)
 $Maps.merge(Map<K, V>, K, V, K, V, ...)
 $Maps.put(...)
 $Maps.copy(...)
-$Maps.clone(...)
-                                 
-// Examples
+$Maps.clone(...)                 
+```
 
+```java
 import static momomo.com.$Maps.*;
 
 HashMap<String, String> europe = map(
