@@ -2,13 +2,6 @@
 
 #### This module is essentially what makes the Core of several of momomo.com's public releases
 
-#### Our other GitHub repositories
-
-* [momomo.com.platform.Lambda](https://github.com/momomo/momomo.com.platform.Lambda)  
-Contains a bunch of `functional interfaces` similar to `Runnable`, `Supplier`, `Function`, `BiFunction`, `Consumer` `...` and so forth all packed in a easily accessed and understood intuitive pattern.
-  
-`Lambda.V1E`, `Lambda.V2E`, `Lambda.R1E`, `Lambda.R2E` are used plenty in examples below.
-
 ### Maven dependency available on maven central [search.maven.org](https://search.maven.org/search?q=com.momomo)
 #### Dependency   
 ```xml
@@ -26,6 +19,16 @@ Contains a bunch of `functional interfaces` similar to `Runnable`, `Supplier`, `
 </repository>
 ```
 
+##### Our other GitHub repositories
+
+* [momomo.com.platform.Lambda](https://github.com/momomo/momomo.com.platform.Lambda)  
+Contains a bunch of `functional interfaces` similar to `Runnable`, `Supplier`, `Function`, `BiFunction`, `Consumer` `...` and so forth all packed in a easily accessed and understood intuitive pattern.  
+`Lambda.V1E`, `Lambda.V2E`, `Lambda.R1E`, `Lambda.R2E` are used plenty in examples below.
+
+* [momomo.com.platform.Nanotime](https://github.com/momomo/momomo.com.platform.Nanotime)  
+Allows for nanosecond precision when asking for time from Java Runtime than standard `System.currentTimeMillis()`.
+
+ 
 ### Important
 
 #### [Exceptions](src/momomo/com/exceptions)
