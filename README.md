@@ -286,13 +286,13 @@ for (Map.Entry<String, String> entry : world.entrySet()) {
 Europe: 5
 Africa: 2
 World : 7
-Capital in country Sweden is Stockholm
-Capital in country Morocco is Rabat
-Capital in country Norway is Oslo
-Capital in country Egypt is Cairo
-Capital in country Poland is Warsaw
-Capital in country France is Paris
-Capital in country Germany is Berlin
+Capital of Sweden is Stockholm
+Capital of Morocco is Rabat
+Capital of Norway is Oslo
+Capital of Egypt is Cairo
+Capital of Poland is Warsaw
+Capital of France is Paris
+Capital of Germany is Berlin
 ```                                                            
 
 #### [Yarn.java](src/momomo/com/Yarn.java) samples
