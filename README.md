@@ -121,7 +121,9 @@ IO.Iterate.File.each, eachRecurse, find, findRecurse ...
 IO.Iterate.Zip .each, ...                
 IO.Iterate.Jar .each, ... 
 IO.Iterate.Url .each, ...                
+```
 
+```java
 StandardServiceRegistryBuilder registry = new StandardServiceRegistryBuilder().applySettings(properties);
 MetadataSources         metadataSources = new MetadataSources(registry.build());
 
@@ -134,15 +136,19 @@ IO.Iterate.Url.each(getClass().getClassLoader().getResource(packege), entry -> {
                                                                              
     // Add the entity to Hibernate JPA entities using MetaDataSources
     metadataSources.addAnnotatedClass(klass);
-});               
+});    
+```
 
+```java           
 IO.Iterate.File.eachRecurse(dir, file -> {
     if ( !file.isDirectory() && file.getName().endsWith(".less" ) ) {
 
         String text = IO.getText(file);
     }
-});
+});    
+```
 
+```java
 IO.Iterate.File.eachRecurse(dir, file -> {
     if (!file.isDirectory()) {
         String name = file.getName();
