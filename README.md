@@ -1,6 +1,9 @@
-## momomo.com.platform.Core
+<!---
+-->
 
-###### Is essentially what makes the Core of several of momomo.com's public releases and contains a bunch of `Java` utility.
+## mcommentomomo.com.platform.Core
+
+###### Is essentially what makes the Core of several of momomo.com's public releases, and is packed with useful everyday `Java` utility that at least serves our needs very well.
 
 ### Maven dependencies available on maven central [search.maven.org](https://search.maven.org/search?q=com.momomo)
 #### Dependency   
@@ -282,7 +285,9 @@ System.out.println("Countries in World : " + world.size());
 for (Map.Entry<String, String> entry : world.entrySet()) {
     System.out.println("Capital of " + entry.getKey() + " is " + entry.getValue() );
 }
+```
 
+```java
 Countries in Europe: 5
 Countries in Africa: 2
 Countries in World : 7
@@ -466,3 +471,6 @@ Coming soon. Please refer to the source code for now.
 ```java
 Coming soon. Please refer to the source code for now. 
 ```
+
+### Contribute
+Send an email to `opensource{at}momomo.com` if you would like to contribute in any way, make changes or otherwise have thoughts and/or ideas on things to improve.
