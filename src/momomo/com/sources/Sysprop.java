@@ -20,8 +20,8 @@ import momomo.com.Numbers;
  *           or 
  *    REDIS_URL.set(...)
  *    
- * If the value has been passed as a system property, from say command line then takes precedence, otherwise, the value specified in java will be used. 
- * This allows for the overriding of properties from the outside, while being able to utilize defaults for other scenarios. 
+ * If the value has been passed as a system property, from say command line then that takes precedence, otherwise, the value specified in the java code will be used. 
+ * This allows for the overriding of properties from the outside, while being able to utilize defaults for development environment and without having to rely on magic configuration files that nobody knows how to configure.  
  * 
  * @author Joseph S.
  */
