@@ -321,11 +321,13 @@ It is named `Yarn` to remind us of the word `String`, since it is for `String` r
 String code = Yarn.$.create("""            
   Hi ${name}! 
 
-  Welcome to our ${site}!
- 
-  We wish you a very happy stay on ${site}!
-  
-""", "name", "Peter", "site", "momomo.com"); 
+  Welcome to our ${site}! 
+
+  Current time is ${time}!  
+""", "name", "Peter", 
+     "site", "momomo.com", 
+     "time", new Date()
+); 
 
 // Yarn.$ is already defined for us of course! But we can also setup something else, like for a hash #{}: 
 SH = new Yarn("#{", "}");                         
