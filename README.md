@@ -85,7 +85,63 @@ IO.remove (CharSequence)               : void
 IO.remove (File)                       : void
 
 // ... and more ...                                        
+```                                                      
+
+```java
+// Create directory if not already exists, true for clean if exists
+IO.mkdirs ("/path/to/some/dir", true);                     
+IO.write  ("/path/to/some/file", "Writes this text to file. Becomes the content in the file.")
+IO.append ("/path/to/some/file", " We add this to the file.")  
+
+assert IO.getText("/path/to/some/file").equals("Writes this text to file. Becomes the content in the file. We add this to the file.")
+
+////////////////////////////////////////////////
+/////// Example with IO.Iterate.Url.each //////             
+//////////////////////////////////////////////
+
+IO.Iterate.File.each, eachRecurse, find, findRecurse ...                
+IO.Iterate.Zip .each, ...                
+IO.Iterate.Jar .each, ... 
+IO.Iterate.Url .each, ...                
+
+StandardServiceRegistryBuilder registry = new StandardServiceRegistryBuilder().applySettings(properties);
+MetadataSources         metadataSources = new MetadataSources(registry.build());
+
+// Iterate a java package on the classpath, could be a file, a jar, a zip ... 
+IO.Iterate.Url.each(getClass().getClassLoader().getResource(packege), entry -> {         
+    String klassName = entry.getRelativeIterationPath();
+    String klass     = (packege + "/" + klassName).replaceAll("/", ".").replaceAll(".class", "");
+
+    Class<?> klass   = Class.forName(klass);
+                                                                             
+    // Add the entity to Hibernate JPA entities using MetaDataSources
+    metadataSources.addAnnotatedClass(klass);
+});               
+
+IO.Iterate.File.eachRecurse(dir, file -> {
+    if ( !file.isDirectory() && file.getName().endsWith(".less" ) ) {
+
+        String text = IO.getText(file);
+    }
+});
+
+IO.Iterate.File.eachRecurse(dir, file -> {
+    if (!file.isDirectory()) {
+        String name = file.getName();
+        String text = IO.getText(file);
+        
+        StringBuilder sb = new StringBuilder();
+        if (should.call(name)) {
+            pattern.replace(sb, text, include, true);
+        }
+        
+        if ( Is.Ok(sb)) {
+            IO.write(file, sb.toString());
+        }
+    }
+});
 ```
+
 
 #### [Is.java](src/momomo/com/Is.java) samples
 
