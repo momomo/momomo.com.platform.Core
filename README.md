@@ -34,7 +34,7 @@ Allows for nanosecond precision when asking for time from Java Runtime than stan
 
 Our IO related operations, nor do most of our other API's, throw a bunch of different checked `exceptions` for various things. Instead we usually transform a checked `exception` into to a `runtime` `exception` equivalent.
 
-######For instance  
+###### For instance  
 For a thrown `IOException` we will `throw new $IOException(original)`.   
 For a thrown `URISyntaxException` we will `throw new $URISyntaxException(original)`.   
 For all other not specially tailored exception handling we will simply `throw new $RuntimeException(original)`.    
