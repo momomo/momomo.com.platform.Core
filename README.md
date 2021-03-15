@@ -8,6 +8,23 @@
 Contains a bunch of `functional interfaces` similar to `Runnable`, `Supplier`, `Function`, `BiFunction`, `Consumer` `...` and so forth all packed in a easily understood declaration pattern.  
 `Lambda.V1E`, `Lambda.V2E`, `Lambda.R1E`, `Lambda.R2E` are used plenty in examples below.
 
+### Maven dependency available on maven central (search.maven.org)
+#### Dependency   
+```
+<dependency>
+  <groupId>com.momomo</groupId>
+  <artifactId>momomo.com.platform.Core</artifactId>
+  <version>2.6.4</version>
+</dependency>                                                      
+```                         
+#### Repository
+```
+<repository>
+    <id>maven-central</id>
+    <url>http://repo1.maven.org/maven2</url>
+</repository>
+```
+
 ### Important
 
 #### [Exceptions](src/momomo/com/exceptions)
@@ -181,18 +198,19 @@ Is.Ok(obj);   // true
 ```
 
 ```java
-////////////////////////////////////////////////
-///////              Other               ////// 
-
 Is.Equal(...)
 Is.Primitive(...)                          
 Is.Double(...)
-... 
-
+Is.Array(...)
+Is.Symlink(...)
+...
+```    
+```java
 Is.NotNull(...)
 Is.Null(...)
-
-   
+```
+    
+```java   
 Is.True(...)
 Is.False(...)
 Is.Or(...)
@@ -200,20 +218,19 @@ Is.Empty(...)
 Is.Between(...)
 Is.In(...)
 Is.In.Jar(...)
-
+```
+    
+```java
 Is.Linux(...)
 Is.Window(...)
 Is.Mac(...)
-
-Is.Symlink(...)
-
-Is.Array(...)      
-
+```
+    
+```java
 Is.Development(...)
 Is.Test(...)
 Is.Production(...)
-
-// ... and more ...
+...
 ```                                           
 
 #### [$Maps.java](src/momomo/com/$Maps.java) samples
