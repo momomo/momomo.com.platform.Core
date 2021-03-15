@@ -318,13 +318,14 @@ Capital of Germany is Berlin
 
 It is named `Yarn` to remind us of the word `String`, since it is for `String` related operations, and a very specific purpose.
 ```java
-// Can you figure out what this code does? 
-                
-String code = Yarn.$.create("""
-  if ( map instanceof ${variable} ) { 
-      return ((${variable}) map).clone();  
-  } 
-  """, "variable", map); 
+String code = Yarn.$.create("""            
+  Hi ${name}! 
+
+  Welcome to our ${site}!
+ 
+  We wish you a very happy stay on ${site}!
+  
+""", "name", "Peter", "site", "momomo.com"); 
 
 // Yarn.$ is already defined for us of course! But we can also setup something else, like for a hash #{}: 
 SH = new Yarn("#{", "}");                         
