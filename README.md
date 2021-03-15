@@ -40,15 +40,6 @@ IO.eachLine(file, (line, number) -> {
 ```
 
 ```java
-                                                    
-// mkdir
-IO.mkdir (CharSequence)                : boolean
-IO.mkdir (File)                        : boolean
-
-// mkdirs                        
-IO.mkdirs(CharSequence)                : File
-IO.mkdirs(File)                        : File
-
 IO.write (CharSequence , ...)          : void
 IO.write (File         , ...)          : void
 IO.write (URL          , ...)          : void                               
@@ -67,6 +58,14 @@ IO.getText (BufferedReader)            : String
 ```    
 
 ```java
+// mkdir
+IO.mkdir (CharSequence)                : boolean
+IO.mkdir (File)                        : boolean
+
+// mkdirs                        
+IO.mkdirs(CharSequence)                : File
+IO.mkdirs(File)                        : File
+
 IO.copy (CharSequence, CharSequence)   : void                            
 IO.copy (File, File)                   : void         
 ...                                      
