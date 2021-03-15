@@ -1,8 +1,8 @@
 ## momomo.com.platform.Core
 
-#### This module is essentially what makes the Core of several of momomo.com's public releases
+###### Is essentially what makes the Core of several of momomo.com's public releases and contains a bunch of `Java` utility.
 
-### Maven dependency available on maven central [search.maven.org](https://search.maven.org/search?q=com.momomo)
+### Maven dependencies available on maven central [search.maven.org](https://search.maven.org/search?q=com.momomo)
 #### Dependency   
 ```xml
 <dependency>
@@ -27,7 +27,6 @@ Contains a bunch of `functional interfaces` similar to `Runnable`, `Supplier`, `
 
 * [momomo.com.platform.Nanotime](https://github.com/momomo/momomo.com.platform.Nanotime)  
 Allows for nanosecond precision when asking for time from Java Runtime than standard `System.currentTimeMillis()`.
-
  
 ### Important
 
