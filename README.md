@@ -280,7 +280,7 @@ System.out.println("Africa: " + africa.size());
 System.out.println("World : " + world.size());
 
 for (Map.Entry<String, String> entry : world.entrySet()) {
-    System.out.println("Capital in country " + entry.getKey() + " is " + entry.getValue() );
+    System.out.println("Capital of " + entry.getKey() + " is " + entry.getValue() );
 }
 
 Europe: 5
