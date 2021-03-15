@@ -419,61 +419,61 @@ public class IO { private IO() {}
     // getText(String, File, URL, URLConnection, InputStream)
     /////////////////////////////////////////////////////////////////////
     
-    public static String getText(CharSequence filepath) {
-        return getText(filepath, Strings.CHARSET);
+    public static String text(CharSequence filepath) {
+        return text(filepath, Strings.CHARSET);
     }
-    public static String getText(CharSequence filepath, Charset charset) {
-        return getText(toFile(filepath.toString()), charset);
+    public static String text(CharSequence filepath, Charset charset) {
+        return text(toFile(filepath.toString()), charset);
     }
     
     /////////////////////////////////////////////////////////////////////
     
-    public static String getText(File file) {
-        return getText(file, Strings.CHARSET);
+    public static String text(File file) {
+        return text(file, Strings.CHARSET);
     }
-    public static String getText(File file, Charset charset) {
+    public static String text(File file, Charset charset) {
         return $Bytes.toString(getBytes(file), charset);
     }
     
     /////////////////////////////////////////////////////////////////////
     
-    public static String getText(URL url) {
-        return getText(url, Strings.CHARSET);
+    public static String text(URL url) {
+        return text(url, Strings.CHARSET);
     }
-    public static String getText(URL url, Charset charset) {
+    public static String text(URL url, Charset charset) {
         return $Bytes.toString(getBytes(url), charset);
     }
     
     /////////////////////////////////////////////////////////////////////
     
-    public static String getText(URI uri) {
-        return getText(uri, Strings.CHARSET);
+    public static String text(URI uri) {
+        return text(uri, Strings.CHARSET);
     }
-    public static String getText(URI uri, Charset charset) {
-        return getText(toURL(uri), charset);
+    public static String text(URI uri, Charset charset) {
+        return text(toURL(uri), charset);
     }
     
     /////////////////////////////////////////////////////////////////////
     
-    public static String getText(URLConnection connection) {
-        return getText(connection, Strings.CHARSET);
+    public static String text(URLConnection connection) {
+        return text(connection, Strings.CHARSET);
     }
-    public static String getText(URLConnection connection, Charset charset) {
+    public static String text(URLConnection connection, Charset charset) {
         return $Bytes.toString(getBytes(connection), charset);
     }
     
     /////////////////////////////////////////////////////////////////////
     
-    public static String getText(InputStream is) {
-        return getText(is, Strings.CHARSET);
+    public static String text(InputStream is) {
+        return text(is, Strings.CHARSET);
     }
-    public static String getText(InputStream is, Charset charset) {
+    public static String text(InputStream is, Charset charset) {
         return $Bytes.toString(getBytes(is), charset);
     }
     
     /////////////////////////////////////////////////////////////////////
     
-    public static String getText(BufferedReader reader) {
+    public static String text(BufferedReader reader) {
         StringBuilder sb = new StringBuilder();
         
         try {

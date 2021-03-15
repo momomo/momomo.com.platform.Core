@@ -146,7 +146,7 @@ import static momomo.com.IO.toURL;
                 printCertificateInformation(connection);
             }
             
-            return IO.getText(connection, charset);
+            return IO.text(connection, charset);
         }
         
         /**

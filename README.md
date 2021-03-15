@@ -63,21 +63,24 @@ IO.eachLine(file, (line, number) -> {
 ```
 
 ```java
-IO.write (CharSequence , ...)          : void
-IO.write (File         , ...)          : void
-IO.write (URL          , ...)          : void                               
-IO.write (URLConnection, ...)          : void
-IO.write (OutputStream , ...)          : void      
-IO.write (File         , ...)          : void                
-IO.write (File         , ...)          : void
+IO.write (CharSequence , ...) : void
+IO.write (File         , ...) : void
+IO.write (URL          , ...) : void                               
+IO.write (URLConnection, ...) : void
+IO.write (OutputStream , ...) : void      
+IO.write (File         , ...) : void                
+IO.write (File         , ...) : void
+    
+```
 
-IO.getText (CharSequence)              : String
-IO.getText (File)                      : String
-IO.getText (InputStream)               : String
-IO.getText (URI)                       : String
-IO.getText (URL)                       : String
-IO.getText (URLConnection)             : String
-IO.getText (BufferedReader)            : String
+```java
+IO.text (CharSequence)        : String
+IO.text (File)                : String
+IO.text (InputStream)         : String
+IO.text (URI)                 : String
+IO.text (URL)                 : String
+IO.text (URLConnection)       : String
+IO.text (BufferedReader)      : String
 ```    
 
 ```java
@@ -116,7 +119,7 @@ IO.mkdirs ("/path/to/some/dir", true);
 IO.write  ("/path/to/some/file", "Writes this text to file. Becomes the content in the file.")
 IO.append ("/path/to/some/file", " We add this to the file.")  
 
-assert IO.getText("/path/to/some/file").equals("Writes this text to file. Becomes the content in the file. We add this to the file.")
+assert IO.text("/path/to/some/file").equals("Writes this text to file. Becomes the content in the file. We add this to the file.")
 ```
 
 ```java
@@ -146,7 +149,7 @@ IO.Iterate.Url.each(getClass().getClassLoader().getResource(packege), entry -> {
 IO.Iterate.File.eachRecurse(dir, file -> {
     if ( !file.isDirectory() && file.getName().endsWith(".less" ) ) {
 
-        String text = IO.getText(file);
+        String text = IO.text(file);
     }
 });    
 ```
@@ -155,7 +158,7 @@ IO.Iterate.File.eachRecurse(dir, file -> {
 IO.Iterate.File.eachRecurse(dir, file -> {
     if (!file.isDirectory()) {
         String name = file.getName();
-        String text = IO.getText(file);
+        String text = IO.text(file);
         
         StringBuilder sb = new StringBuilder();
         if (should.call(name)) {
