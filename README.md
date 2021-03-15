@@ -329,7 +329,7 @@ String code = Yarn.$.create("""
 
 ```java
 SH = new Yarn("#{", "}"); 
-String line = SH.create("Hello my name is #{name}!", "name", "Joseph");
+String line = SH.create("Hello, my name is #{name}!", "name", "Joseph");
 ```                                                               
 
 #### [Strings.java](src/momomo/com/Strings.java) sample
