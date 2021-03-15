@@ -5,7 +5,7 @@
 #### Our other GitHub repositories
 
 * [momomo.com.platform.Lambda](https://github.com/momomo/momomo.com.platform.Lambda)  
-They are basically a bunch of `functional interfaces` similar to `Runnable`, `Supplier`, `Function`, `BiFunction`, `Consumer` `...` and so forth all packed in a easily understood declaration pattern.  
+Contains a bunch of `functional interfaces` similar to `Runnable`, `Supplier`, `Function`, `BiFunction`, `Consumer` `...` and so forth all packed in a easily understood declaration pattern.  
 `Lambda.V1E`, `Lambda.V2E`, `Lambda.R1E`, `Lambda.R2E` are used plenty in examples below.
 
 ### Important
