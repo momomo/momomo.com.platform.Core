@@ -71,7 +71,6 @@ IO.write (URLConnection, ...) : void
 IO.write (OutputStream , ...) : void      
 IO.write (File         , ...) : void                
 IO.write (File         , ...) : void
-    
 ```
 
 ```java                                                  
