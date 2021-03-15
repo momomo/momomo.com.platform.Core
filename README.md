@@ -316,7 +316,7 @@ Capital of Germany is Berlin
 
 #### [Yarn.java](src/momomo/com/Yarn.java) sample
 
-It is named `Yarn` to resemble and make the connectoin with the word `String`, hence it is for String related operations, a particular one purpose kind.
+It is named `Yarn` to remind us of the word `String`, since it is for `String` related operations, and a very specific purpose.
 ```java
 // Can you figure out what this code does? 
                 
