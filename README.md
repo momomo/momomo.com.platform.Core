@@ -321,7 +321,7 @@ It is named `Yarn` to remind us of the word `String`, since it is for `String` r
 String code = Yarn.$.create("""            
     Hi ${name}! 
     
-    Welcome to our ${site}!
+    Welcome to our ${site}.
 """, "name", "Peter", "site", "momomo.com"); 
 ```
 
