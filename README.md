@@ -193,7 +193,7 @@ Is.NotNull(...)
 Is.Null(...)
 
    
-Is.True(...)
+IO.True(...)
 Is.False(...)
 Is.Or(...)
 Is.Empty(...)
