@@ -33,7 +33,7 @@ Allows for nanosecond precision when asking for time from Java Runtime than stan
  
 ### Info
 
-##### [Exceptions](src/momomo/com/exceptions)
+#### [Exceptions](src/momomo/com/exceptions)
 
 Our IO related operations, nor do most of our other API's, throw a bunch of different checked `exceptions` for various things. Instead we usually transform a checked `exception` into to a `runtime` `exception` equivalent.
 
