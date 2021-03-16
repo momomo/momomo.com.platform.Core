@@ -2,6 +2,7 @@
 package momomo.com;
 
 import com.sun.net.httpserver.Headers;
+import momomo.com.collections.$Map;
 import momomo.com.exceptions.$MapsCloneException;
 import momomo.com.exceptions.$MapsCloneGuranteeException;
 
@@ -220,7 +221,6 @@ public final class $Maps {
     
     
     public static <M extends Map<K, V>, K, V> Map<K, V> copy(M map) {
-        
         // HashMap
         if ( map instanceof LinkedHashMap ) {
             return copy((LinkedHashMap<K, V>) map);
@@ -350,7 +350,10 @@ public final class $Maps {
     }
     public static Headers copy(Headers map) {
         return merge(new Headers(), map, COPY_OVERWRITE, COPY_DEEP);
-    }                                      ;
+    }
+    public static <K, V> $Map<K, V> copy($Map<K, V> map) {
+        return map.copy();
+    }
     
     /////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////

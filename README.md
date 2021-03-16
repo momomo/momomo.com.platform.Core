@@ -271,22 +271,22 @@ $Maps.clone(...)
 ```java
 import static momomo.com.$Maps.*;
 
-HashMap<String, String> europe = map(
+Map<String, String> europe = map(
     "Sweden" , "Stockholm",
     "France" , "Paris",
     "Germany", "Berlin"
 );
 
 merge(europe, "Poland", "Warsaw");
-merge(europe, "Norway", "Oslo");
+merge(europe, "Norway", "Oslo", "Switzerland", "Zurich");
 
-HashMap<String, String> africa = map(
+Map<String, String> africa = map(
     "Morocco", "Rabat",
     "Egypt"  , "Cairo"
 );
 
 // Copy europe, then merge africa onto the copy
-HashMap<String, String> world = merge(copy(europe), africa);
+Map<String, String> world = merge(copy(europe), africa);
 
 ////////////////////////////////////////////////
 //////            We print              ///////
@@ -302,14 +302,15 @@ for (Map.Entry<String, String> entry : world.entrySet()) {
 ```
 
 ```java
-Countries in Europe: 5
+Countries in Europe: 6
 Countries in Africa: 2
-Countries in World : 7
+Countries in World : 8
 Capital of Sweden is Stockholm
 Capital of Morocco is Rabat
 Capital of Norway is Oslo
 Capital of Egypt is Cairo
 Capital of Poland is Warsaw
+Capital of Switzerland is Zurich
 Capital of France is Paris
 Capital of Germany is Berlin
 ```                                                            

@@ -1,5 +1,7 @@
 package momomo.com.collections;
 
+import momomo.com.$Maps;
+
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.HashMap;
@@ -139,6 +141,10 @@ public final class $Map<K, V> implements Serializable {
     @Override
     public String toString() {
         return map.toString();
+    }
+    
+    public $Map copy() {
+        return new $Map($Maps.copy(map)); 
     }
     
 }
