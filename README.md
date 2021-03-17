@@ -36,7 +36,8 @@ Allows for nanosecond time resolution when asking for time from Java Runtime in 
 
 #### [Exceptions](src/momomo/com/exceptions)
 
-Our IO related operations, nor do most of our other API's, throw a bunch of different checked `exceptions` for various things. Instead we usually transform a checked `exception` into to a `runtime` `exception` equivalent.
+Our IO related operations, and most of our other API's, normally would throw a bunch of different checked `exceptions` for various things, `IOException`, `ClassNotFoundException` and so forth.  
+Instead we usually transform a checked `exception` into to a `runtime` `exception` equivalent.
 
 ###### For instance  
 For a thrown `IOException` we will `throw new $IOException(original)`.   
