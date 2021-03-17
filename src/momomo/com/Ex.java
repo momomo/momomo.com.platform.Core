@@ -3,6 +3,7 @@ package momomo.com;
 import momomo.com.exceptions.$DatabaseSQLException;
 import momomo.com.exceptions.$IOException;
 import momomo.com.exceptions.$InterruptedException;
+import momomo.com.exceptions.$ReflectionException;
 import momomo.com.exceptions.$RuntimeException;
 import momomo.com.sources.WriterPrint;
 
@@ -149,6 +150,10 @@ public class Ex { private Ex(){}
             return runtime((SQLException) e);
         }
     
+        if ( e instanceof ReflectiveOperationException ) {
+            return runtime( ( ReflectiveOperationException) e );
+        }
+    
         return new $RuntimeException(e); 
     }
     
@@ -162,6 +167,10 @@ public class Ex { private Ex(){}
     
     public static $DatabaseSQLException runtime(SQLException e) {
         return new $DatabaseSQLException(e);
+    }
+    
+    public static $ReflectionException runtime(ReflectiveOperationException e) {
+        return new $ReflectionException(e);
     }
 
     /////////////////////////////////////////////////////////////////////

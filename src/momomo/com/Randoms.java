@@ -2,6 +2,10 @@ package momomo.com;
 
 import java.util.UUID;
 
+/**
+ * 
+ * @author Joseph S.
+ */
 public class Randoms { private Randoms(){}
     
     public static int Integer() {

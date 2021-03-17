@@ -3,7 +3,7 @@
 
 ## momomo.com.platform.Core
 
-###### Is essentially what makes the Core of several of momomo.com's public releases, and is packed with useful everyday `Java` utility that at least serves our needs very well.
+###### Makes out the core of several of our public releases, and is packed with useful everyday `Java` utility that at least serves our needs very well.
 
 ##### Maven dependencies available on maven central [search.maven.org](https://search.maven.org/search?q=com.momomo)
 ##### Dependency   
@@ -11,7 +11,7 @@
 <dependency>
   <groupId>com.momomo</groupId>
   <artifactId>momomo.com.platform.Core</artifactId>
-  <version>2.6.4</version>
+  <version>1.2.5</version>
 </dependency>                                                      
 ```                         
 ##### Repository
@@ -24,11 +24,11 @@
 
 ##### Our other repositories
 
-* [momomo.com.platform.Lambda](https://github.com/momomo/momomo.com.platform.Lambda)  
+* [`momomo.com.platform.Lambda`](https://github.com/momomo/momomo.com.platform.Lambda)  
 Contains a bunch of `functional interfaces` similar to `Runnable`, `Supplier`, `Function`, `BiFunction`, `Consumer` `...` and so forth all packed in a easily accessed and understood intuitive pattern.  
 `Lambda.V1E`, `Lambda.V2E`, `Lambda.R1E`, `Lambda.R2E` are used plenty in examples below.
 
-* [momomo.com.platform.Nanotime](https://github.com/momomo/momomo.com.platform.Nanotime)  
+* [`momomo.com.platform.Nanotime`](https://github.com/momomo/momomo.com.platform.Nanotime)  
 Allows for nanosecond time resolution when asking for time from Java Runtime in contrast with `System.currentTimeMillis()`.
 
  
