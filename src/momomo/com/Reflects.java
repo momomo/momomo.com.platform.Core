@@ -89,9 +89,8 @@ import java.lang.reflect.InvocationTargetException;
             
             try {
                 return getFieldlocal(klass, name);
-                
             } catch ($ReflectionException ignore) {
-                return eachSuperClass(klass, (superKlass)->{
+                return eachSuperClass(klass, (superKlass) -> {
                     return getField(superKlass, name);
                 });
             }
@@ -108,11 +107,8 @@ import java.lang.reflect.InvocationTargetException;
     
     /////////////////////////////////////////////////////////////////////
     
-    /**
-     * Optimized why redundancy is not a concern ...
-     */
     public static Object getValue(Object instance, Field field) {
-        if ( !field.isAccessible() ) {
+        if ( !field.canAccess(instance) ) {
             field.setAccessible(true);
         }
         
