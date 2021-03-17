@@ -10,7 +10,7 @@ import momomo.com.$Lists;
  * 
  * @author Joseph S.
  */
-public final class MovingAverageCumulative extends MovingAverageBase {
+public final class MovingAverageCumulative extends MovingAverage {
     private long n = 0;
     
     @Override

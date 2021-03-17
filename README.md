@@ -42,7 +42,9 @@ Our IO related operations, nor do most of our other API's, throw a bunch of diff
 For a thrown `IOException` we will `throw new $IOException(original)`.   
 For a thrown `URISyntaxException` we will `throw new $URISyntaxException(original)`.   
 For all other not specially tailored exception handling we will simply `throw new $RuntimeException(original)`.    
-We usually do this automagically using our `Ex.runtime(exception)` method(s) to also avoid wrapping an `Exception` twice. 
+We usually do this automagically using our `Ex.runtime(exception)` method(s) to also avoid wrapping an `Exception` twice.
+
+### Guide 
 
 #### [IO.java](src/momomo/com/IO.java) sample
 

@@ -12,7 +12,7 @@ import momomo.com.$Lists;
  * 
  * @author Joseph S.
  */
-public final class MovingAverageConverging extends MovingAverageBase {
+public final class MovingAverageConverging extends MovingAverage {
     private final double α, β;
     
     /**

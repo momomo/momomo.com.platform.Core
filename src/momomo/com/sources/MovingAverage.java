@@ -7,17 +7,17 @@ package momomo.com.sources;
  * 
  * @author Joseph S.
  */
-public abstract class MovingAverageBase {
+public abstract class MovingAverage {
     private final Object lock    = new Object();
     public  final String prepend;
     
     protected double average = 0.0;
     
-    protected MovingAverageBase() {
+    protected MovingAverage() {
         this("Average\t");
     }
     
-    protected MovingAverageBase(String prepend) {
+    protected MovingAverage(String prepend) {
         this.prepend = prepend;
     }
     
@@ -33,7 +33,7 @@ public abstract class MovingAverageBase {
         }
     }
     
-    public final double average() {
+    public final double get() {
         return average;
     }
     

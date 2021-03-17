@@ -68,7 +68,7 @@ public class Examples {
         Is.Ok(bool);  // false
         Is.Ok(array); // false
         Is.Ok(list);  // false
-        Is.Ok(map);   // false
+        Is.Ok(map);   // false  
         Is.Ok("");    // false
         Is.Ok(0);     // true
     
