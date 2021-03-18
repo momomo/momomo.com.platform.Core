@@ -5,6 +5,11 @@ import momomo.com.exceptions.$RuntimeException;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
+import java.util.ArrayList;
+import java.util.IdentityHashMap;
+import java.util.List;
 
 /**
  * Reflection operations that have so far made it to the Core module.  
@@ -12,7 +17,8 @@ import java.lang.reflect.InvocationTargetException;
  * @author Joseph S.
  */
 @SuppressWarnings("unchecked") public class Reflects { private Reflects(){}
-
+    private static final IdentityHashMap<Class<?>, ArrayList<Field>> FIELDS = new IdentityHashMap<>();
+    
     /////////////////////////////////////////////////////////////////////
     
     public static <R> R eachSuperClass(Class<?> clazz, Lambda.R1<R, Class<?>> lambda ) {
@@ -105,6 +111,24 @@ import java.lang.reflect.InvocationTargetException;
         }
     }
     
+    public static List<Field> getFields(Class<?> clazz) {
+        ArrayList<Field> fields;
+        if ( (fields= FIELDS.get(clazz)) == null || !Is.Production() ) {
+            FIELDS.put(clazz, fields = new ArrayList<Field>());
+            getFields(fields, clazz);
+        }
+        return fields;
+    }
+    
+    private static void getFields(List<Field> fields, Class<?> clazz) {
+        for (Field element : getFieldsLocal(clazz)) fields.add(element); // Likely slightly faster than Collections.addAll( fields, localFields(clazz) );
+        
+        Class<?> superclass;
+        if ( !isObject(clazz) && (superclass = clazz.getSuperclass()) != null ) {
+            getFields(fields, superclass);
+        }
+    }
+    
     /**
      * Excludes inherited fields
      */
@@ -127,9 +151,70 @@ import java.lang.reflect.InvocationTargetException;
     }
     
     /////////////////////////////////////////////////////////////////////
+    // is ...
+    /////////////////////////////////////////////////////////////////////
     
     public static boolean isObject(Class<?> klass) {
         return klass.equals(Object.class);
     }
+    
+    public static boolean isInstance(Object val) {
+        return !isClass(val);
+    }
+    
+    public static boolean isStatic(Field property) {
+        return Modifier.isStatic(property.getModifiers());
+    }
+    
+    public static boolean isInstance(Field property) {
+        return !Modifier.isStatic(property.getModifiers());
+    }
+    
+    public static boolean isStatic(Class klass) {
+        return Modifier.isStatic(klass.getModifiers());
+    }
+    
+    public static boolean isPrivate(Field field) {
+        return Modifier.isPrivate(field.getModifiers());
+    }
+    
+    public static boolean isPrivate(Method method) {
+        return Modifier.isPrivate(method.getModifiers());
+    }
+    
+    public static boolean isProtected(Method method) {
+        return Modifier.isProtected(method.getModifiers());
+    }
+    
+    public static boolean isPublic(Class<?> clazz) {
+        return Modifier.isPublic(clazz.getModifiers());
+    }
+    
+    public static boolean isPublic(int modifiers) {
+        return Modifier.isPublic(modifiers);
+    }
+    
+    public static boolean isPublic(Method method) {
+        return Modifier.isPublic(method.getModifiers());
+    }
+    
+    public static boolean isPublic(Field field) {
+        return Modifier.isPublic(field.getModifiers());
+    }
+    
+    public static boolean isClass(Object val) {
+        return val instanceof Class;
+    }
+    
+    /**
+     * Is non static inner class?
+     */
+    public static boolean isInnerclass(Class klass) {
+        return klass.getDeclaringClass() != null && !isStatic(klass);
+    }
+    
+    /////////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////
     
 }
