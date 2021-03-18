@@ -1,4 +1,4 @@
-package momomo.com;
+package momomo.com.sources;
 
 /**
  * Temporary to break loose from module hell
@@ -6,7 +6,6 @@ package momomo.com;
  * @author Joseph S.
  */
 public class Constants {
-    
     /**
      * Really belongs to {@link momomo.com.Base.encryption.Password}
      * @author Joseph S.
