@@ -11,7 +11,7 @@
 <dependency>
   <groupId>com.momomo</groupId>
   <artifactId>momomo.com.platform.Core</artifactId>
-  <version>1.2.5</version>
+  <version>1.2.6</version>
 </dependency>                                                      
 ```                         
 ##### Repository
