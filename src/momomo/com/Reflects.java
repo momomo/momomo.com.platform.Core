@@ -97,12 +97,19 @@ import java.lang.reflect.InvocationTargetException;
         }
     }
     
-    public static Field getFieldlocal(Class<?> clazz, String propertyName) {
+    public static Field getFieldlocal(Class<?> klass, String propertyName) {
         try {
-            return clazz.getDeclaredField(propertyName);
+            return klass.getDeclaredField(propertyName);
         } catch (NoSuchFieldException e) {
             throw Ex.runtime(e);
         }
+    }
+    
+    /**
+     * Excludes inherited fields
+     */
+    public static Field[] getFieldsLocal(Class<?> klass) {
+        return klass.getDeclaredFields();
     }
     
     /////////////////////////////////////////////////////////////////////
