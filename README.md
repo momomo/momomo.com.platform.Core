@@ -31,10 +31,12 @@ Contains a bunch of `functional interfaces` similar to `Runnable`, `Supplier`, `
 * [`momomo.com.platform.Nanotime`](https://github.com/momomo/momomo.com.platform.Nanotime)  
 Allows for nanosecond time resolution when asking for time from Java Runtime in contrast with `System.currentTimeMillis()`.
 
+#### Background
+Most of the code in this module is in because it is the least common denominator for other releases we've made or are about to make. 
+So some classes, like `Reflects.java`, `Time.java`, `Regexes.java` currently *only contains* a subset of functionality otherwise found in our **other** `Core` library. 
+With time more and more methods and classes will be added to this module, as we make our code *releasable*.     
  
-### Info
-
-#### [Exceptions](src/momomo/com/exceptions)
+#### [Exception handling](src/momomo/com/exceptions)
 
 Our IO related operations, and most of our other API's, normally would throw a bunch of different checked `exceptions` for various things, `IOException`, `ClassNotFoundException` and so forth.  
 Instead we usually transform a checked `exception` into to a `runtime` `exception` equivalent.
@@ -45,7 +47,80 @@ For a thrown `URISyntaxException` we will `throw new $URISyntaxException(origina
 For all other not specially tailored exception handling we will simply `throw new $RuntimeException(original)`.    
 We usually do this automagically using our `Ex.runtime(exception)` method(s) to also avoid wrapping an `Exception` twice.
 
-### Guide 
+#### [Is.java](src/momomo/com/Is.java) sample
+
+`Is` is class containing various boolean related **answers** for various questions. Method names are consistently uppercase to allow us to 
+retain intuitive names such as `Is.True` or `Is.In()` as `Is.true()` or `Is.in` would not be possible to use.   
+
+```java
+Object              obj   = null;
+Boolean             bool  = null;
+String[]            array = {};
+ArrayList<String>   list  = new ArrayList<>();
+Map<String, String> map   = new HashMap<>();       
+
+Is.Ok(obj);   // false
+Is.Ok(bool);  // false
+Is.Ok(array); // false
+Is.Ok(list);  // false
+Is.Ok(map);   // false
+Is.Ok("");    // false
+Is.Ok(0);     // true
+
+list.add("1");
+Is.Ok(list);  // true
+
+map.put("a", "1");
+Is.Ok(map);   // true
+
+obj = list;
+Is.Ok(obj);   // true
+
+obj = map;
+Is.Ok(obj);   // true
+
+obj = "hello";
+Is.Ok(obj);   // true
+
+obj = Boolean.TRUE;
+Is.Ok(obj);   // true                      
+```
+
+```java
+Is.Equal(...)
+Is.Primitive(...)                          
+Is.Double(...)
+Is.Array(...)
+Is.Symlink(...)
+...
+```    
+```java
+Is.NotNull(...)
+Is.Null(...)
+```
+    
+```java   
+Is.True(...)
+Is.False(...)
+Is.Or(...)
+Is.Empty(...)
+Is.Between(...)
+Is.In(...)
+Is.In.Jar(...)
+```
+    
+```java
+Is.Linux(...)
+Is.Window(...)
+Is.Mac(...)
+```
+    
+```java
+Is.Development(...)
+Is.Test(...)
+Is.Production(...)
+...
+```        
 
 #### [IO.java](src/momomo/com/IO.java) sample
 
@@ -163,7 +238,6 @@ IO.Iterate.Url.each(getClass().getClassLoader().getResource(packege), entry -> {
 ```java           
 IO.Iterate.File.eachRecurse(dir, file -> {
     if ( !file.isDirectory() && file.getName().endsWith(".less" ) ) {
-
         String text = IO.text(file);
     }
 });    
@@ -171,95 +245,19 @@ IO.Iterate.File.eachRecurse(dir, file -> {
 
 ```java
 IO.Iterate.File.eachRecurse(dir, file -> {
-    if (!file.isDirectory()) {
+    if ( !Is.Directory(file) ) {
         String name = file.getName();
         String text = IO.text(file);
         
         StringBuilder sb = new StringBuilder();
-        if (should.call(name)) {
-            pattern.replace(sb, text, include, true);
-        }
-        
-        if ( Is.Ok(sb)) {
-            IO.write(file, sb.toString());
+        ... 
+
+        if ( Is.Ok(sb) ) {
+            IO.write(file, sb);
         }
     }
 });
-```
-
-#### [Is.java](src/momomo/com/Is.java) sample
-
-`Is` is class containing various boolean related **answers** for various questions.  
-
-```java
-Object              obj   = null;
-Boolean             bool  = null;
-String[]            array = {};
-ArrayList<String>   list  = new ArrayList<>();
-Map<String, String> map   = new HashMap<>();       
-
-Is.Ok(obj);   // false
-Is.Ok(bool);  // false
-Is.Ok(array); // false
-Is.Ok(list);  // false
-Is.Ok(map);   // false
-Is.Ok("");    // false
-Is.Ok(0);     // true
-
-list.add("1");
-Is.Ok(list);  // true
-
-map.put("a", "1");
-Is.Ok(map);   // true
-
-obj = list;
-Is.Ok(obj);   // true
-
-obj = map;
-Is.Ok(obj);   // true
-
-obj = "hello";
-Is.Ok(obj);   // true
-
-obj = Boolean.TRUE;
-Is.Ok(obj);   // true                      
-```
-
-```java
-Is.Equal(...)
-Is.Primitive(...)                          
-Is.Double(...)
-Is.Array(...)
-Is.Symlink(...)
-...
-```    
-```java
-Is.NotNull(...)
-Is.Null(...)
-```
-    
-```java   
-Is.True(...)
-Is.False(...)
-Is.Or(...)
-Is.Empty(...)
-Is.Between(...)
-Is.In(...)
-Is.In.Jar(...)
-```
-    
-```java
-Is.Linux(...)
-Is.Window(...)
-Is.Mac(...)
-```
-    
-```java
-Is.Development(...)
-Is.Test(...)
-Is.Production(...)
-...
-```                                           
+```                                   
 
 #### [$Maps.java](src/momomo/com/$Maps.java) sample
 
@@ -490,6 +488,11 @@ Coming soon. Please refer to the source code for now.
 
 
 #### [Gson.java](src/momomo/com/Gson.java) sample
+```java
+Coming soon. Please refer to the source code for now. 
+```           
+
+#### [Time.java](src/momomo/com/Gson.java) sample
 ```java
 Coming soon. Please refer to the source code for now. 
 ```           

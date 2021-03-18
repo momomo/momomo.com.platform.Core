@@ -392,6 +392,13 @@ public class Is { private Is(){}
         return o.length() == 0;
     }
     
+    public boolean Directory(CharSequence filepath) {
+        return Directory( IO.toFile(filepath) );
+    }
+    public boolean Directory(File file) {
+        return file.isDirectory();
+    }
+    
     public static boolean Empty(Object[] o) {
         return Array.getLength(o) == 0;
     }
