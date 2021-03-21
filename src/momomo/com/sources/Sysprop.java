@@ -27,22 +27,23 @@ import momomo.com.Numbers;
  */
 public final class Sysprop {
     
-    private final String property, dephault;
-    private String value;
+    private final String key, dephault;
+    private       String cached;
     
-    public Sysprop(String property) {
-        this(property, null);
+    public Sysprop(String key) {
+        this(key, null);
     }
     
-    public Sysprop(CharSequence property, Object dephault) {
-        this.property = property.toString();
-        this.dephault = dephault == null ? null : dephault.toString();
+    public Sysprop(CharSequence key, Object dephault) {
+        this.key      = key.toString();
+        this.dephault = dephault == null ? null : ("" + dephault);
     }
+    
+    /////////////////////////////////////////////////////////////////////
     
     public Sysprop set(String value) {
-        System.setProperty(property, this.value = value); return this;
+        System.setProperty(key, this.cached = value); return this;
     }
-    
     public Sysprop setTrue() {
         return set("true");
     }
@@ -51,34 +52,50 @@ public final class Sysprop {
         return set("false");
     }
     
+    /////////////////////////////////////////////////////////////////////
+    
     public String get() {
         return get(null);
     }
     
-    public String get(String dephault) {
-        return value != null ? value : Is.Or(value = System.getProperty(property), Is.Or(dephault, this.dephault));
+    /**
+     * Returns the cached value if already called, otherwise reads if from System.getProperpty()
+     * If alst not set, will use our supplied parameter if ok. 
+     * If also not set, will attempt to see if there is a default value stored.
+     */
+    public String get(String fallback) {
+        return Is.Ok(cached) ? cached : Is.Or(cached = System.getProperty(key), Is.Or(fallback, this.dephault) );
     }
     
-    public boolean isTrue() {
-        return equal("true");
+    public String key() {
+        return key; 
     }
     
-    public boolean isFalse() {
-        return equal("false");
+    /////////////////////////////////////////////////////////////////////
+    
+    public boolean isSet() {
+        return !isNull();
     }
     
     public boolean isNull() {
         return get() == null;
     }
-    public boolean isSet() {
-        return !isNull();
+    
+    public boolean isEqual(CharSequence value) {
+        return value.toString().equals(get());
     }
     
-    public boolean equal(String value) {
-        return value.equals(get());
+    public boolean isTrue() {
+        return isEqual("true");
     }
     
-    public int getInteger() {
+    public boolean isFalse() {
+        return isEqual("false");
+    }
+    
+    /////////////////////////////////////////////////////////////////////
+    
+    public int toInteger() {
         return Numbers.toInt(this.get());
     }
     

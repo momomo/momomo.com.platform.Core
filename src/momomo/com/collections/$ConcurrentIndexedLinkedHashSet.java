@@ -1,103 +1,106 @@
 
 package momomo.com.collections;
 
-import java.io.Serializable;
-import java.util.*;
+import java.util.Collection;
+import java.util.Iterator;
 
 /**
- * Allows you to call get with o(1) instead of o(n) to get an instance by index.
- * Note, remove still costs o(n). 
- *
+ * @see $IndexedLinkedHashSet
+ * 
+ * Concurrent by simply using synchronized. 
+ * 
  * @author Joseph S.
  */
-public final class $ConcurrentIndexedLinkedHashSet<T> implements Set<T>, Serializable {
-    
-    private final ArrayList<T> list = new ArrayList<>( );
-    private final HashSet<T>   set  = new HashSet<>  ( );
+public class $ConcurrentIndexedLinkedHashSet<T> extends $IndexedLinkedHashSet<T> {
     
     @Override
     public synchronized boolean add(T e) {
-        if ( set.add(e) ) {
-            return list.add(e);
-        }
-        return false;
+        return super.add(e);
     }
     
     @Override
     public synchronized boolean remove(Object o) {
-        if ( set.remove(o) ) {
-            return list.remove(o);
-        }
-        return false;
+        return super.remove(o);
     }
     
     @Override
     public synchronized boolean containsAll(Collection<?> c) {
-        return set.containsAll(c);
+        return super.containsAll(c);
     }
     
     @Override
     public synchronized void clear() {
-        set.clear(); list.clear();
+        super.clear();
     }
     
     @Override
     public synchronized boolean removeAll(Collection<?> c) {
-        if ( set.removeAll(c) ) {
-            return list.removeAll(c);
-        }
-        return true;
+        return super.removeAll(c);
     }
     
     @Override
     public synchronized boolean retainAll(Collection<?> c) {
-        if ( set.retainAll(c) ) {
-            return list.retainAll(c);
-        }
-        return false;
+        return super.retainAll(c);
     }
     
     @Override
     public synchronized boolean addAll(Collection<? extends T> c) {
-        boolean modified = false;
-        for (T e : c)
-            if (add(e))
-                modified = true;
-        return modified;
+        return super.addAll(c);
     }
     
     @Override
     public synchronized int size() {
-        return list.size();
+        return super.size();
     }
     
     @Override
     public synchronized boolean isEmpty() {
-        return list.isEmpty();
+        return super.isEmpty();
     }
     
     @Override
     public synchronized boolean contains(Object o) {
-        return set.contains(o);
+        return super.contains(o);
     }
     
     @Override
     public synchronized Iterator<T> iterator() {
-        return list.iterator();
+        return super.iterator();
     }
     
     @Override
     public synchronized Object[] toArray() {
-        return list.toArray();
+        return super.toArray();
     }
     
     @Override
     public synchronized <X> X[] toArray(X[] a) {
-        return list.toArray(a);
+        return super.toArray(a);
     }
     
+    @Override
     public synchronized T get(int index) {
-        return list.get(index);
+        return super.get(index);
+    }
+    
+    @Override
+    public synchronized T getAt(int at) {
+        return super.last();
+    }
+    
+    @Override
+    public synchronized T last() {
+        return super.last();
+    }
+    
+    @Override
+    public synchronized T removeLast() {
+        return super.removeLast();
+    }
+    
+    @Override
+    public synchronized T removeAt(int at) {
+        return super.removeAt(at);
     }
     
 }

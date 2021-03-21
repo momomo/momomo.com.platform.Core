@@ -2,10 +2,10 @@
 package momomo.com;
 
 import momomo.com.exceptions.$RuntimeException;
-import momomo.com.sources.Sysprop;
+
+import static momomo.com.Globals.Configurable.ENVIRONMENT_ALLOW_DEVELOPMENT_OVER_PRODUCTION;
 
 /**
- * 
  * Example: 
  *  Is.Production()
  *  Is.Test()
@@ -22,9 +22,6 @@ import momomo.com.sources.Sysprop;
  */
 public abstract class $Environment {
     public static final String PRODUCTION = "production", DEVELOPMENT = "development", TEST = "test";
-    
-    private static final String MMM_ALLOW_DEVELOPMENT_OVER_PRODUCTION = "momomo.com.environment.allow.development.over.production";
-    public  static final String MMM_SPRING_PROFILE_KEY                = "spring.profiles.active";
     
     // Determined once only. Once set, it can not be modified.
     private static String PROFILE;
@@ -93,14 +90,14 @@ public abstract class $Environment {
      * Package private. Use Is.Production(loose) instead.
      */
     static boolean isProduction(boolean loose) {
-        return isProduction() && (loose == false || !Configurable.ALLOW_DEVELOPMENT_OVER_PRODUCTION.isTrue());
+        return isProduction() && (loose == false || !ENVIRONMENT_ALLOW_DEVELOPMENT_OVER_PRODUCTION.isTrue());
     }
     
     /////////////////////////////////////////////////////////////////////
     
     private static String getProfile() {
         if (PROFILE == null) {
-            PROFILE = System.getProperty(MMM_SPRING_PROFILE_KEY);
+            PROFILE = Globals.Configurable.ENVIRONMENT_SPRING_PROFILE.get();
         }
         
         return PROFILE;
@@ -111,8 +108,7 @@ public abstract class $Environment {
     private static void setEnvironment(String profile) {
         if (PROFILE == null) {
             if (PRODUCTION.equals(profile) || DEVELOPMENT.equals(profile) || TEST.equals(profile)) {
-                System.setProperty(MMM_SPRING_PROFILE_KEY, profile);
-                PROFILE = profile;
+                PROFILE = Globals.Configurable.ENVIRONMENT_SPRING_PROFILE.set(profile).get();
             }
             else {
                 throw new $RuntimeException("Invalid profile value: " + profile);
@@ -122,17 +118,5 @@ public abstract class $Environment {
             throw new $RuntimeException("The active profile has already been set! Too late to change it now! Current value: " + PROFILE);
         }
     }
-    
-    /////////////////////////////////////////////////////////////////////
-    /////////////////////////////////////////////////////////////////////
-    /////////////////////////////////////////////////////////////////////
-    
-    public static final class Configurable {
-        public static final Sysprop ALLOW_DEVELOPMENT_OVER_PRODUCTION = new Sysprop(MMM_ALLOW_DEVELOPMENT_OVER_PRODUCTION, false);
-    }
-    
-    /////////////////////////////////////////////////////////////////////
-    /////////////////////////////////////////////////////////////////////
-    /////////////////////////////////////////////////////////////////////
     
 }

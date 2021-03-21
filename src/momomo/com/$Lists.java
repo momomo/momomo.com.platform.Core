@@ -1,7 +1,11 @@
 /* Copyright(C) 2014 - 2020 Momomo LTD. Proprietary and confidential. Usage of this file on any medium without a written consent by Momomo LTD. is strictly prohibited. All Rights Reserved. */
 package momomo.com;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
 
 /**
  *
@@ -21,6 +25,10 @@ public final class $Lists {  private $Lists() {}
     public static <T> List<T> remove( List<T> lst, int fromIndex, int toIndex ) {
         lst.subList(fromIndex, toIndex).clear();
         return lst;
+    }
+    
+    public static <T> T removeLast(List<T> lst ) {
+        T last = last(lst); lst.remove(lst.size()-1); return last;
     }
     
     @SafeVarargs

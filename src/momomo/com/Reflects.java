@@ -7,6 +7,8 @@ import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.IdentityHashMap;
 import java.util.List;
@@ -83,6 +85,51 @@ import java.util.List;
     /////////////////////////////////////////////////////////////////////
     
     /**
+     * TODO cache this
+     */
+    public static <T> Class<T> getGenericClass(Object instance) {
+        return getGenericClass(instance, 0);
+    }
+    
+    public static <T> Class<T> getGenericClass(Object instance, int position) {
+        Type[] types = getGenericClasses(instance);
+        if ( types != null && position < types.length ) {
+            return cast(
+                types[position]
+            );
+        }
+        return null;
+    }
+    
+    public static Type[] getGenericClasses(Object instance) {
+        return getParameterizedType(instance.getClass());
+    }
+    
+    private static Type[] getParameterizedType(Class<?> clazz) {
+        Type type = clazz.getGenericSuperclass();
+        if ( type != null ) {
+            if (type instanceof ParameterizedType) {
+                return ((ParameterizedType) type).getActualTypeArguments();
+            } else {
+                Type[] types = clazz.getGenericInterfaces();
+                if ( types != null && types.length > 0 ) {
+                    type = types[0];
+                    if (type instanceof ParameterizedType) {
+                        return ((ParameterizedType) type).getActualTypeArguments();
+                    } else {
+                        // Likely a lambda, we can't infer the generic types as for anonomoys inner classes.
+                        // TODO: See this: jdk.internal.org.objectweb.asm.Type.getArgumentTypes(methodRef[2])[argumentIndex].getClassName();
+                        return null;
+                    }
+                }
+            }
+        }
+        return null;
+    }
+    
+    /////////////////////////////////////////////////////////////////////
+    
+    /**
      * Any field. Will traverse the superclasses as well to get the method if needed, excluding Object.class
      * 
      * TODO cache this result
@@ -138,13 +185,13 @@ import java.util.List;
     
     /////////////////////////////////////////////////////////////////////
     
-    public static Object getValue(Object instance, Field field) {
+    public static <T> T getValue(Object instance, Field field) {
         if ( !field.canAccess(instance) ) {
             field.setAccessible(true);
         }
         
         try {
-            return field.get(instance);
+            return (T) field.get(instance);
         } catch (IllegalAccessException e) {
             throw new $RuntimeException(e);
         }
