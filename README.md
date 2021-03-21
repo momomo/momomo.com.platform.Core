@@ -32,7 +32,7 @@ Contains a bunch of `functional interfaces` similar to `Runnable`, `Supplier`, `
 Allows for nanosecond time resolution when asking for time from Java Runtime in contrast with `System.currentTimeMillis()`.
 
 * [`momomo.com.platform.Return`](https://github.com/momomo/momomo.com.platform.Return)  
-A intuitive library that allows you to return multiple return values with defined types on the fly from any method rather than being limited to the default maximum of one.
+An intuitive library that allows you to return multiple return values with defined types on the fly from any method rather than being limited to the default maximum of one.
 
 #### Background
 Most of the code in this module is in because it is the least common denominator for other releases we've made or are about to make. 
