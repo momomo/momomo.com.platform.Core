@@ -133,9 +133,8 @@ public class Ex { private Ex(){}
     }
     
     public static $RuntimeException runtime(Throwable e) {
-        // No need to rewrap
         if ( e instanceof $RuntimeException ) {
-            return ($RuntimeException) e;
+            return ($RuntimeException) e;   // No need to wrap again. Throw as is!
         }
         
         if ( e instanceof IOException ) {
