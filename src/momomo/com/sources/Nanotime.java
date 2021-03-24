@@ -42,15 +42,17 @@
 package momomo.com.sources;
 
 import momomo.com.Nano;
-import momomo.com.Randoms;
+import momomo.com.Numbers;
+import momomo.com.Return;
 import momomo.com.annotations.informative.Development;
 import momomo.com.exceptions.$InterruptedException;
+import momomo.com.log;
 
-import java.math.BigInteger;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Allows for nanosecond precision when asking for time from Java Runtime than standard System.currentTimeMillis.
- * 
+ *
  * First, know that System.nanoTime() is elapsed nanos since an arbitrary origin, usually the start of the JVM and can usually only be used to measure elapsed time between two invocations.
  *
  * What this implementation does is allow you to get a higher precision when asking for the time, with nanosecond precision.
@@ -65,18 +67,18 @@ import java.math.BigInteger;
  *  1. We will record the difference between the two.
  *  2. Sleep a random amount of nano seconds.
  *  3. Repeat this process 1000 times.
- *  
+ *
  * We then take the average recorded difference and use this average to go from System.nanoTime() to a System.currentTimeMillis() by subtracting the average as a calculated DIFF.
  *
  * Is this a 100% accurate record of current time in nanos?
  * Is there even such a definition? What is time? Even atomic clocks do not give a 100% accurate definition of time at any given moment.
- * 
+ *
  * When we ask for Time.nano() we can expect some discrepancy, as even the cost of calling System.nanoTime() has a cost and in reality only represent a time in the past once given access to it.
  *
  * Rather it a higher precision one than System.currentTimeMillis() as System.currentTimeMillis() will often prove useless when invoked tightly, while System.nanoTime() will show always show a diff, and so will Nano.time().
  *
  * Our code just calibrates the two and allows you to map System.nanoTime() to one based on a sane and constant reference frame usually to when baby Jesus was born, rather than when the JVM turned on.
- * 
+ *
  * Recalibration
  * Note, recalibration by default is turned off, but you may pass a value of your choice to trigger a recalibration how often you'd like using Nano.setInstance( new Nanotime(...) ), but there is nothing to suggest a recalibration is required unless the underlying system specification differs drastically during runtime in where two calls to System.nanoTime() will diverge.
  *
@@ -545,10 +547,10 @@ import java.math.BigInteger;
  * For normal use, you'd just call Nano.time(). Thats' it!
  *
  * To configure Nanotime.java just call Nanotime.setInstance( new Nanotime() ) prior to any use of Nano.time(). You can also create your own instance version ti be accessed separately.
- * 
+ *
  * @see momomo.com.Nano#time()
  * @see Nanotime#setInstance(Nanotime)
- * 
+ *
  * @author Joseph S.
  */
 public class Nanotime {
@@ -589,43 +591,40 @@ public class Nanotime {
      * Here we calibrate System.currentTimeMillis with System.nanoTime. 
      */
     public void calibrate() {
-        // We need to use BigInteger to add 1000 big numbers
-        BigInteger total = new BigInteger("0"); int  i = -1, to = 1000; while ( ++i < to ) {
-            total = total.add(
-                new BigInteger("" +
-                    (
-                        // Big question is. When did we invoke System.nanoTime()? 
-                        // 
-                        // We do it in a one liner to ensure it runs without interference.  
-                        
-                        // We include some warm calls 
-                        0*(System.nanoTime() - System.currentTimeMillis() - System.nanoTime() + System.currentTimeMillis()) +
+        long start = System.nanoTime();
     
-                        // This system.nanoTime() is what we are after. 
-                        ( -System.nanoTime() + System.currentTimeMillis() * 1000000L )
-                        
-                        -
-                            
-                        // We also remove the estimated cost of invoking System.nanoTime() as a way to estimate the cost to the same as System.currentTimeMillis() as there is no easy way to measure the latter.  
-                        // We then subtract this cost to get back to System.nanoTime().
-                        // All of this likely has no meaning really.     
-                        ( -System.nanoTime() + System.nanoTime() )
-                    )
-                )   
-            );
+        MovingAverageConverging average = new MovingAverageConverging(0.567);
+    
+        long millis = System.currentTimeMillis(), nanos, cost, added = 0, to = 100; 
         
-            try {
-                 // Sleep random nanos, so we can repeat the measurement at a more "random" time
-                 Thread.sleep(0, Randoms.Integer(300, 10000) );  
-            }
-            catch (InterruptedException e) {
-                throw new momomo.com.exceptions.$InterruptedException(e);
+        for( ;; ) {
+            // We are only interested in comparing at the switches of the milliseconds. When that happens, we also read the System.nanoTime(). 
+            // We repeat this enough times to get a good 
+            // We need to run this logic as tight as we possibly can 
+            // We do it in a one liner to avoid having other logic run in between
+            if ( millis != (millis = System.currentTimeMillis()) && (nanos = System.nanoTime()) != 0 && (cost = System.nanoTime() - System.nanoTime()) != 0 ) {
+                average.add(
+                    // The diff between both as already recorded at the switch
+                    millis * 1000000L - nanos
+                        
+                    +
+                        
+                    // We also remove the estimated cost of invoking System.nanoTime() at this time as a way to estimate the cost to the 
+                    // time of System.currentTimeMillis() was invoked as there is no easy way to measure the latter.  
+                    cost
+                );
+    
+                if ( ++added == to ) {
+                    break;
+                }
             }
         }
     
-        DIFF = Math.round( total.divide( new BigInteger("" + to) ).doubleValue() );
-    }
+        // Time to calibrate
+        long elapsed = TimeUnit.NANOSECONDS.toMillis(System.nanoTime() - start); log.info(getClass(), "Took ", elapsed, "ms to Nanotime.calibrate()");
     
+        DIFF = Math.round(average.get());
+    }
     
     /////////////////////////////////////////////////////////////////////
     // The setup of the singleton instance. 
@@ -649,28 +648,81 @@ public class Nanotime {
     /////////////////////////////////////////////////////////////////////
     
     @Development public static void main(String[] args) {
-        example();
+        a();
     }
     
-    private static void diff() throws InterruptedException {
-        int a = 10, b = 100000; long diff = 0; int i = -1; while ( ++i < a ) {
-            int j = -1; while (++j < b) {
-                diff += Math.abs( ( -Nano.time() + System.currentTimeMillis() * 1000000L) );
+    private static double a() {
+        return a(four());
+    }
+    
+    private static double a(Return.Four[] array) {
+        double largest = Double.MIN_VALUE;
+        for (Return.Four<Long, Long, Long, Long> it : array) {
+            
+            int length = ("" + it.first).length();
+            Long same  = Numbers.toLong(("" + it.second).substring(0, length));
+            
+            long diff;
+            // We want to check the ones creeping up to being the same
+            if   ( same < it.first ) {
+                diff = (it.first * 1000000L - it.second);
+    
+                if ( diff > largest ) {
+                    if ( true  ) {
+            
+                        System.out.println(
+                                "millis 1  : " + it.first  + "\n" +
+                                "nanos  1  : " + it.second + "\n" +
+                                "nanos  2  : " + it.third  + "\n" +
+                                "millis 2  : " + it.fourth + "\n" +
+                    
+                                "max       : " + Long.MAX_VALUE + "\n" +
+                                "diff   1  : " + (it.first * 1000000L - it.second) + "\n" +
+                                "diff   n  : " + (it.third - it.second) + "\n" +
+                                "diff   2  : " + (it.fourth * 1000000L - it.third) + "\n" +
+                                "largest   : " + largest + "\n"
+                        );
+                    }
+        
+                    largest = diff;
+                }
             }
-            Thread.sleep(Randoms.Long(0, 100));
         }
         
-        System.out.println( (1d * diff) / (a * b)  );
+        System.out.println("Largest: " + largest);
+        
+        return largest;
     }
     
-    private static void example() {
-        int i = -1; while (++i < 1000) {
+    private static Return.Four[] four() {
+        // We are trying to get as tight as possible while still being able to retain values.
+        // Array is going to be faster than a LinkedList. 
+        int to = 1000000; Return.Four[] array = new Return.Four[to]; int i = -1; while (++i < to) {
+            array[i] = new Return.Four<>(
+                System.currentTimeMillis(),
+                Nano.time(),
+                Nano.time(),
+                System.currentTimeMillis()
+            );
+        }
+        
+        return array;
+    }
+    
+    private static void print() {
+        // We generate these without a print to system.out.print which has a cost and will impact how tightly we can get the values.
+        // We are trying to get as tight as possible while still being able to retain values.
+        // Array is going to be faster than a LinkedList
+        Return.Four[] array = four();
+        
+        for (Return.Two it : array) {
             System.out.println(
-                "nanos : " + Nano.time()                + "\n" +
-                "millis: " + System.currentTimeMillis() + "\n" 
+                "nanos  : " + it.second + "\n" +
+                "millis : " + it.first  + "\n"
             );
         }
     }
+    
     /////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////
