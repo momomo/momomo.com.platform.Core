@@ -1,8 +1,6 @@
 <!---
 -->
 
-## momomo.com.platform.Core
-
 ###### Makes out the core of several of our public releases, and is packed with useful everyday `Java` utility that at least serves our needs very well.
 
 ##### Maven dependencies available on maven central [search.maven.org](https://search.maven.org/search?q=com.momomo)
