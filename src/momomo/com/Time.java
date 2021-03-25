@@ -8,7 +8,7 @@ import java.sql.Timestamp;
 public class Time {
     
     public static Timestamp stamp() {
-        return new Timestamp(System.currentTimeMillis());
+        return Nano.timestamp();
     }
     
 }
