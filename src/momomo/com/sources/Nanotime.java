@@ -47,7 +47,14 @@ import momomo.com.Strings;
 import momomo.com.annotations.informative.Development;
 
 import java.sql.Timestamp;
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.OffsetDateTime;
+import java.time.ZonedDateTime;
 import java.util.concurrent.TimeUnit;
+
+import static java.time.ZoneOffset.UTC;
 
 /**
  * Documentation is available on 
@@ -104,13 +111,42 @@ public class Nanotime {
      * Returns higher time precision than System.currentTimeMillis() as a java.sql.Timestamp
      */
     public Timestamp timestamp() {
-        long      now       = get();
-        long      seconds   = TimeUnit.NANOSECONDS.toSeconds(now);
-        Timestamp timestamp = new Timestamp(TimeUnit.SECONDS.toMillis(seconds));
+        long now     = get();
+        long seconds = TimeUnit.NANOSECONDS.toSeconds(now);
+        int  nanos   = (int) (now - TimeUnit.SECONDS.toNanos(seconds));
         
-        timestamp.setNanos((int) (now - TimeUnit.SECONDS.toNanos(seconds)));
+        Timestamp timestamp = new Timestamp(TimeUnit.SECONDS.toMillis(seconds));
+        timestamp.setNanos(nanos);
         
         return timestamp;
+    }
+    
+    public Instant instant() {
+        long now     = get();
+        long seconds = TimeUnit.NANOSECONDS.toSeconds(now);
+        int  nanos   = (int) (now - TimeUnit.SECONDS.toNanos(seconds));
+        
+        return Instant.ofEpochSecond(seconds, nanos);
+    }
+    
+    public LocalDateTime datetime() {
+        long now     = get();
+        long seconds = TimeUnit.NANOSECONDS.toSeconds(now);
+        int  nanos   = (int) (now - TimeUnit.SECONDS.toNanos(seconds));
+        
+        return LocalDateTime.ofEpochSecond(seconds, nanos, UTC);
+    }
+    
+    public OffsetDateTime offsetime() {
+        return instant().atOffset(UTC);
+    }
+    
+    public LocalTime localtime() {
+        return LocalTime.ofInstant(instant(), UTC);
+    }
+    
+    public ZonedDateTime zonedtime() {
+        return instant().atZone(UTC);
     }
     
     /////////////////////////////////////////////////////////////////////
