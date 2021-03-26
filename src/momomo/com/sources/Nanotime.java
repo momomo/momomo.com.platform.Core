@@ -137,7 +137,7 @@ public class Nanotime {
         return LocalDateTime.ofEpochSecond(seconds, nanos, UTC);
     }
     
-    public OffsetDateTime offsetime() {
+    public OffsetDateTime offsettime() {
         return instant().atOffset(UTC);
     }
     

@@ -46,6 +46,7 @@ import momomo.com.sources.Nanotime;
 import java.sql.Timestamp;
 import java.time.Instant;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.OffsetDateTime;
 import java.time.ZonedDateTime;
 import java.time.temporal.Temporal;
@@ -87,7 +88,7 @@ public final class Nano { private Nano(){}
     /**
      * toString() -> 21:18:34.260363177
      */
-    public static Temporal localtime() {
+    public static LocalTime localtime() {
         return instance().localtime();
     }
     
@@ -108,8 +109,8 @@ public final class Nano { private Nano(){}
     /**
      * toString() -> 2021-03-25T21:18:49.434622190Z
      */
-    public static OffsetDateTime offsetime() {
-        return instance().offsetime();
+    public static OffsetDateTime offsettime() {
+        return instance().offsettime();
     }
     
     public static void main(String[] args) {
@@ -118,7 +119,7 @@ public final class Nano { private Nano(){}
         System.out.println(localtime());
         System.out.println(instant());
         System.out.println(zonedtime());
-        System.out.println(offsetime());
+        System.out.println(offsettime());
     }
 }
     
