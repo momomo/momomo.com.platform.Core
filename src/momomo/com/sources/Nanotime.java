@@ -97,7 +97,7 @@ public class Nanotime {
         
         } while( true );
     
-        diff = Math.round(average.get()) + adjust;
+        this.diff = Math.round(average.get()) + adjust;
     }
     
     /**
