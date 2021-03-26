@@ -22,20 +22,18 @@
 
 ##### Our other repositories
 
-* [`momomo.com.platform.Lambda`](https://github.com/momomo/momomo.com.platform.Lambda)  
-Contains a bunch of `functional interfaces` similar to `Runnable`, `Supplier`, `Function`, `BiFunction`, `Consumer` `...` and so forth all packed in a easily accessed and understood intuitive pattern.  
-`Lambda.V1E`, `Lambda.V2E`, `Lambda.R1E`, `Lambda.R2E` are used plenty in examples below.
+* **[`momomo.com.platform.Lambda`](https://github.com/momomo/momomo.com.platform.Lambda)**  
+Contains a bunch of `functional interfaces` similar to `Runnable`, `Supplier`, `Function`, `BiFunction`, `Consumer` `...` and so forth all packed in a easily accessed and understood intuitive pattern.    
+**`Lambda.V1E`**, **`Lambda.V2E`**, **`Lambda.R1E`**, **`Lambda.R2E`, ... ** are used plenty in examples below.
 
-* [`momomo.com.platform.Return`](https://github.com/momomo/momomo.com.platform.Return)  
+* **[`momomo.com.platform.Return`](https://github.com/momomo/momomo.com.platform.Return)**  
 An intuitive library that allows you to return multiple return values with defined types on the fly from any method rather than being limited to the default maximum of one.
 
-* [`momomo.com.platform.Nanotime`](https://github.com/momomo/momomo.com.platform.Nanotime)  
+* **[`momomo.com.platform.Nanotime`](https://github.com/momomo/momomo.com.platform.Nanotime)**  
 Allows for nanosecond time resolution when asking for time from Java Runtime in contrast with `System.currentTimeMillis()`.
 
-* [`momomo.com.platform.db.transactional.Hibernate`](https://github.com/momomo/momomo.com.platform.db.transactional.Hibernate)  
+* **[`momomo.com.platform.db.transactional.Hibernate`](https://github.com/momomo/momomo.com.platform.db.transactional.Hibernate)**  
 A library to execute database command in transactions without having to use annotations based on Hibernate libraries. No Spring!
-
----
 
 #### Background
 Most of the code in this module is in because it is the least common denominator for other releases we've made or are about to make. 
