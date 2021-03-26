@@ -46,10 +46,10 @@ Our IO related operations, and most of our other API's, normally would throw a b
 Instead we usually transform a checked `exception` into to a `runtime` `exception` equivalent.
 
 ###### For instance  
-For a thrown `IOException` we will `throw new $IOException(original)`.   
-For a thrown `URISyntaxException` we will `throw new $URISyntaxException(original)`.   
-For all other not specially tailored exception handling we will simply `throw new $RuntimeException(original)`.    
-We usually do this automagically using our `Ex.runtime(exception)` method(s) to also avoid wrapping an `Exception` twice.
+For a thrown `IOException` we will **`throw new $IOException(original)`**.   
+For a thrown `URISyntaxException` we will **`throw new $URISyntaxException(original)`**.   
+For all other not specially tailored exception handling we will simply **`throw new $RuntimeException(original)`**.    
+We usually do this automagically using our **`Ex.runtime(exception)`** method(s) to also avoid wrapping an `Exception` twice.
 
 #### [Is.java](src/momomo/com/Is.java) sample
 
