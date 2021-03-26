@@ -113,7 +113,7 @@ public final class Nano { private Nano(){}
         return instance().offsettime();
     }
     
-    public static void main(String[] args) {
+    private static void main(String[] args) {
         System.out.println(timestamp());
         System.out.println(datetime());
         System.out.println(localtime());
