@@ -9,7 +9,7 @@
 <dependency>
   <groupId>com.momomo</groupId>
   <artifactId>momomo.com.platform.Core</artifactId>
-  <version>1.2.6</version>
+  <version>1.2.7</version>
 </dependency>                                                      
 ```                         
 ##### Repository
