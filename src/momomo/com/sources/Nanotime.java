@@ -67,7 +67,7 @@ import static java.time.ZoneOffset.UTC;
  * @author Joseph S.
  */
 public class Nanotime {
-    protected final long diff;    // Between System.nanoTime and System.currentTimeMillis() in order to give the current time in nanos, which is used to estimate the cost of the System.nanoTime operation
+    public final long diff;    // Between System.nanoTime and System.currentTimeMillis() in order to give the current time in nanos, which is used to estimate the cost of the System.nanoTime operation
     
     public Nanotime() {
         this(0);
