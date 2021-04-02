@@ -174,7 +174,7 @@ public class Nanotime {
     /////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////
     
-    @Development public static void main(String[] args) {
+    @Development private static void main(String[] args) {
         Long[][] array = sample();
         
         errorsize(array, true); 
