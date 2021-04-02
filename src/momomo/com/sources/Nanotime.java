@@ -80,23 +80,23 @@ public class Nanotime {
      * There is no reason really to be even looking at getting as close to System.currentTimeMillis() as possible. 
      */
     public Nanotime(long adjust) {
-        MovingAverageConverging average = new MovingAverageConverging(0.667);
+        MovingAverageConverging average = new MovingAverageConverging(0.67);
         
         long nowMillis, nowNanos, added = 0, max = 100, lastMillis = System.currentTimeMillis();
         do {
             nowNanos  = System.nanoTime();
             nowMillis = System.currentTimeMillis();
-        
-            if ( nowMillis == (lastMillis + 1) ) {
-                average.add( nowMillis * 1000000L - nowNanos + (-System.nanoTime() + System.nanoTime()) );
-            
-                if ( ++added == max ) break;
-            }
-        
-            lastMillis = nowMillis;
-        
-        } while( true );
     
+            if (nowMillis == (lastMillis + 1)) {
+                average.add(nowMillis * 1000000L - nowNanos + (-System.nanoTime() + System.nanoTime()));
+        
+                if (++added == max) break;
+            }
+    
+            lastMillis = nowMillis;
+    
+        } while (true);
+        
         this.diff = Math.round(average.get()) + adjust;
     }
     
@@ -174,7 +174,7 @@ public class Nanotime {
     /////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////
     
-    @Development private static void main(String[] args) {
+    @Development public static void main(String[] args) {
         Long[][] array = sample();
         
         errorsize(array, true); 
@@ -193,8 +193,7 @@ public class Nanotime {
      * If the last call to millis is what we expect we feel the error margin is within an acceptable range. 
      */
     @Development private static double errorsize(Long[][] array, boolean printLarge) {
-        double smallest = 100000;
-        double largest  = 0;
+        double smallest = 100000, largest  = 0;
         int i = -1; for (Long[] it : array) {
             
             if  ( ++i < 500 ) continue; 
@@ -269,7 +268,7 @@ public class Nanotime {
     @Development private static Long[][] sample(Nanotime nano) {
         // We are trying to get as tight as possible while still being able to retain values.
         // Array is going to be faster than a LinkedList. 
-        int to = 100000; Long[][] array = new Long[to][5]; int i = -1; while (++i < to) {
+        int to = 1000000; Long[][] array = new Long[to][5]; int i = -1; while (++i < to) {
             array[i] = new Long[]{ nano.get(), System.currentTimeMillis(), nano.get(), nano.get(), System.currentTimeMillis() };
         }
         return array;
