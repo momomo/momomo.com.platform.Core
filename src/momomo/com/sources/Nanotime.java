@@ -80,9 +80,9 @@ public class Nanotime {
      * There is no reason really to be even looking at getting as close to System.currentTimeMillis() as possible. 
      */
     public Nanotime(long adjust) {
-        MovingAverageConverging average = new MovingAverageConverging(0.67);
+        MovingAverageConverging average = new MovingAverageConverging(0.678);
         
-        long nowMillis, nowNanos, added = 0, max = 100, lastMillis = System.currentTimeMillis();
+        long nowMillis, nowNanos, added = 0, max = 100, lastMillis = System.currentTimeMillis(), lastNanos = System.nanoTime();
         do {
             nowNanos  = System.nanoTime();
             nowMillis = System.currentTimeMillis();
@@ -268,7 +268,7 @@ public class Nanotime {
     @Development private static Long[][] sample(Nanotime nano) {
         // We are trying to get as tight as possible while still being able to retain values.
         // Array is going to be faster than a LinkedList. 
-        int to = 1000000; Long[][] array = new Long[to][5]; int i = -1; while (++i < to) {
+        int to = 100000; Long[][] array = new Long[to][5]; int i = -1; while (++i < to) {
             array[i] = new Long[]{ nano.get(), System.currentTimeMillis(), nano.get(), nano.get(), System.currentTimeMillis() };
         }
         return array;
