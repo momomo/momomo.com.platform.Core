@@ -11,8 +11,8 @@ public class Constants {
      * @author Joseph S.
      */
     public static final class Password {
-        public static final String PASSWORD_INCORRECT_REPEAT_VAL = "###!!!PASSWORD_REPEAT_ERROR!!!###";
-        public static final String PASSWORD_INCORRECT_LENGTH_VAL = "###!!!PASSWORD_LENGTH_ERROR!!!###";
+        public static final String PASSWORD_INCORRECT_REPEAT_VAL = "!!!#@_@#!!!PASSWORD_REPEAT_ERROR!!!#@_@#!!!";
+        public static final String PASSWORD_INCORRECT_LENGTH_VAL = "!!!#@_@#!!!PASSWORD_LENGTH_ERROR!!!#@_@#!!!";
     }
     
 }
