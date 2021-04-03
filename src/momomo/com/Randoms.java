@@ -32,8 +32,12 @@ public class Randoms { private Randoms(){}
         return min + Math.round( Math.random() * ( (max - min) ) );
     }
     
-    public static String UUID() {
-        return UUID.randomUUID().toString();
+    public static String UUID(int overloading) {
+        return UUID().toString();
+    }
+    
+    public static UUID UUID() {
+        return UUID.randomUUID();
     }
     
     public static String String() {
