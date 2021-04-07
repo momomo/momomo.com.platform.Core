@@ -6,7 +6,7 @@
 ##### Dependencies 
 * **[`momomo.com.platform.Lambda`](https://github.com/momomo/momomo.com.platform.Lambda)** 
 * **[`momomo.com.platform.Return`](https://github.com/momomo/momomo.com.platform.Return)** 
-* **[`org.projectlombok:lombok@1.18.10) `](https://search.maven.org/artifact/org.projectlombok/lombok/1.18.10/jar)** 
+* **[`org.projectlombok:lombok@1.18.10`](https://search.maven.org/artifact/org.projectlombok/lombok/1.18.10/jar)** 
 * **[`com.google:com.google.code.gson@2.8.6`](https://search.maven.org/artifact/com.google.code.gson/gson/2.8.6/jar)** 
 * **[`com.opencsv:opencsv@5.2`](https://mvnrepository.com/artifact/com.opencsv/opencsv/5.2)**
 
@@ -37,7 +37,7 @@ Contains a bunch of `functional interfaces` similar to `Runnable`, `Supplier`, `
 An intuitive library that allows you to return multiple return values with defined types on the fly from any method rather than being limited to the default maximum of one.
 
 * **[`momomo.com.platform.Nanotime`](https://github.com/momomo/momomo.com.platform.Nanotime)**  
-Allows for nanosecond time resolution when asking for time from Java Runtime in contrast with `System.currentTimeMillis()`.
+Allows for nanosecond time resolution when asking for time from Java Runtime in contrast with **`System.currentTimeMillis()`**.
 
 * **[`momomo.com.platform.db.transactional.Hibernate`](https://github.com/momomo/momomo.com.platform.db.transactional.Hibernate)**  
 A library to execute database command in transactions without having to use annotations based on Hibernate libraries. No Spring!
@@ -49,19 +49,19 @@ With time more and more methods and classes will be added to this module, as we 
  
 #### [Exception handling](src/momomo/com/exceptions)
 
-Our IO related operations, and most of our other API's, normally would throw a bunch of different checked `exceptions` for various things, `IOException`, `ClassNotFoundException` and so forth.  
+Our IO related operations, and most of our other API's, normally would throw a bunch of different checked `exceptions` for various things, **`IOException`**, **`ClassNotFoundException`** and so forth.  
 Instead we usually transform a checked `exception` into to a `runtime` `exception` equivalent.
 
 ###### For instance  
-For a thrown `IOException` we will **`throw new $IOException(original)`**.   
-For a thrown `URISyntaxException` we will **`throw new $URISyntaxException(original)`**.   
+For a thrown **`IOException`** we will **`throw new $IOException(original)`**.   
+For a thrown **`URISyntaxException`** we will **`throw new $URISyntaxException(original)`**.   
 For all other not specially tailored exception handling we will simply **`throw new $RuntimeException(original)`**.    
 We usually do this automagically using our **`Ex.runtime(exception)`** method(s) to also avoid wrapping an `Exception` twice.
 
 #### [Is.java](src/momomo/com/Is.java) sample
 
-`Is` is class containing various boolean related **answers** for various questions. Method names are consistently uppercase to allow us to 
-retain intuitive names such as `Is.True` or `Is.In()` as `Is.true()` or `Is.in` would not be possible to use.   
+**`Is`** is class containing various boolean related **answers** for various questions. Method names are consistently uppercase to allow us to 
+retain intuitive names such as **`Is.True`** or **`Is.In()`** as **`Is.true()`** or **`Is.in`** would not be possible to use.   
 
 ```java
 Object              obj   = null;
@@ -330,7 +330,7 @@ Capital of Germany is Berlin
 
 #### [Yarn.java](src/momomo/com/Yarn.java) sample
 
-It is named `Yarn` to remind us of the word `String`, since it is for `String` related operations, and a very specific purpose.
+It is named **`Yarn`** to remind us of the word **`String`**, since it is for **`String`** related operations, and a very specific purpose.
 ```java
 String code = Yarn.$.create("""            
   Hi ${name}! 
@@ -341,7 +341,7 @@ String code = Yarn.$.create("""
 """, "name", "Peter", "site", "momomo.com"); 
 ```
 
-`Yarn.$` is already defined for us of course! But we can also setup something else, like for a hash `#{}`:
+**`Yarn.$`** is already defined for us of course! But we can also setup something else, like for a hash **`#{}`**:
 
 ```java
 SH = new Yarn("#{", "}"); 
