@@ -6,8 +6,8 @@
 ##### Dependencies 
 * **[`momomo.com.platform.Lambda`](https://github.com/momomo/momomo.com.platform.Lambda)** 
 * **[`momomo.com.platform.Return`](https://github.com/momomo/momomo.com.platform.Return)** 
-* **[`com.google.code.gson`](https://search.maven.org/artifact/com.google.code.gson/gson/2.8.6/jar)** 
-* **[`opencsv`](https://mvnrepository.com/artifact/com.opencsv/opencsv/5.2)**
+* **[`com.google  -> com.google.code.gson`](https://search.maven.org/artifact/com.google.code.gson/gson/2.8.6/jar)** 
+* **[`com.opencsv -> opencsv`](https://mvnrepository.com/artifact/com.opencsv/opencsv/5.2)**
 
 ##### Maven dependencies available on maven central [search.maven.org](https://search.maven.org/search?q=com.momomo)
 ##### Dependency   
