@@ -44,7 +44,7 @@ A library to execute database command in transactions without having to use anno
 
 #### Background
 Most of the code in this module is in because it is the least common denominator for other releases we've made or are about to make. 
-So some classes, like **`Reflects.java`**, **`Time.java`**, **`Regexes.java`** currently *only contains* a subset of functionality otherwise found in our **other** `Core` library. 
+So some classes, like **`Reflects.java`**, **`Time.java`**, **`Regexes.java`** currently *only contains* a subset of functionality otherwise found in our **other**, still private **`Base`** library. 
 With time more and more methods and classes will be added to this module, as we make our code *releasable*.     
  
 #### [Exception handling](src/momomo/com/exceptions)
