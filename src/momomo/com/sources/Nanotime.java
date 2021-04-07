@@ -103,6 +103,13 @@ public class Nanotime {
     }
     
     /**
+     * For synchronization across several machines a diff would be calculated prior to creating the instance in order for us to retain the final aspects of the diff to ensure constant and linear behaviour against System.nanoTime()
+     */
+    public Nanotime(long diff) {
+        this.diff = diff;
+    }
+    
+    /**
      * Returns higher time precision than System.currentTimeMillis() in nano seconds
      */
     public long get() {
