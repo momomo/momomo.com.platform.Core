@@ -27,7 +27,7 @@
 </repository>
 ```
 
-##### Our significant repositories
+##### Our highlighted repositories
 
 * **[`momomo.com.platform.Lambda`](https://github.com/momomo/momomo.com.platform.Lambda)**  
 Contains a bunch of `functional interfaces` similar to `Runnable`, `Supplier`, `Function`, `BiFunction`, `Consumer` `...` and so forth all packed in a easily accessed and understood intuitive pattern that are used plenty in our libraries. **`Lambda.V1E`**, **`Lambda.V2E`**, **`Lambda.R1E`**, **`Lambda.R2E`**, ...
@@ -40,6 +40,9 @@ Allows for nanosecond time resolution when asking for time from Java Runtime in 
 
 * **[`momomo.com.platform.db.transactional.Hibernate`](https://github.com/momomo/momomo.com.platform.db.transactional.Hibernate)**  
 A library to execute database command in transactions without having to use annotations based on Hibernate libraries. No Spring!
+
+* **[`momomo.com.platform.db.transactional.Spring`](https://github.com/momomo/momomo.com.platform.db.transactional.Spring)**  
+A library to execute database command in transactions without having to use annotations based on Spring libraries.
 
 #### Background
 Most of the code in this module is in because it is the least common denominator for other releases we've made or are about to make. 
