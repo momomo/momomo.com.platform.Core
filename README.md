@@ -3,6 +3,12 @@
 
 ##### Makes out the core of several of our public releases, and is packed with useful everyday `Java` utility that at least serves our needs very well.
 
+##### Dependencies 
+* **[`momomo.com.platform.Lambda`](https://github.com/momomo/momomo.com.platform.Lambda)** 
+* **[`momomo.com.platform.Return`](https://github.com/momomo/momomo.com.platform.Return)** 
+* **[`com.google.code.gson`](https://search.maven.org/artifact/com.google.code.gson/gson/2.8.6/jar)** 
+* **[`opencsv`](https://mvnrepository.com/artifact/com.opencsv/opencsv/5.2)**
+
 ##### Maven dependencies available on maven central [search.maven.org](https://search.maven.org/search?q=com.momomo)
 ##### Dependency   
 ```xml
