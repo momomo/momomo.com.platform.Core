@@ -329,7 +329,7 @@ Capital of Germany is Berlin
 
 #### [Yarn.java](src/momomo/com/Yarn.java) examples
 
-It is named **`Yarn`** to remind us of the word **`String`**, since it is for **`String`** related operations, and a very specific purpose.
+It is named **`Yarn`** to remind us of the word **`String`**, since it is for **`String`** related operations, with a very specific purpose.
 ```java
 String code = Yarn.$("""            
   Hi ${name}! 
